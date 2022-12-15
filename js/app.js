@@ -27,3 +27,14 @@ function handleClick(evt){
   sq = evt.target
   console.log(sqIdx);
 }
+
+board = []
+boardspace =
+{
+  boardIdx: 0,
+  isRefuge: true,
+  isEdge: true,
+  isThrone: false,
+  occupied: null
+}
+console.log(boardspace);
