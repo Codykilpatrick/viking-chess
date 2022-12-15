@@ -1,4 +1,4 @@
-board = 
+export const board = 
 [{boardIdx: 0, isRefuge: true, isEdge: true, isThrone: false, occupied: null},        
 {boardIdx: 1, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
 {boardIdx: 2, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
@@ -132,4 +132,3 @@ board =
 {boardIdx: 120, isRefuge: true, isEdge: true, isThrone: false, occupied: null},
 ]
 
-export {board}

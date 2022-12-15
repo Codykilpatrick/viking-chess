@@ -1,12 +1,11 @@
 
 /*-------------------------------- Constants -----------------------------*/
-edgeSpaces = []
-refugeSpaces = []
 
+import {board} from "./board.js"
 
 
 /*-------------------------------- Variables -----------------------------*/
-let board, turn, winner, tie, player
+let turn, winner, tie, player
 
 
 /*------------------------ Cached Element References ---------------------*/
@@ -27,14 +26,3 @@ function handleClick(evt){
   sq = evt.target
   console.log(sqIdx);
 }
-
-board = []
-boardspace =
-{
-  boardIdx: 0,
-  isRefuge: true,
-  isEdge: true,
-  isThrone: false,
-  occupied: null
-}
-console.log(boardspace);

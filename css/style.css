@@ -21,3 +21,7 @@ section.board {
   margin: auto;
   margin-bottom: 16px;
 }
+
+section.board > * {
+  border: red solid 1px;
+}
