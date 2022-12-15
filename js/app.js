@@ -36,14 +36,13 @@ function handleClick(evt){
   firstClick = sq.innerText
   if (firstClick === "1" || firstClick === "-1"){
     placePiece(firstClickId, firstClick)
+    board[firstClickId].occupied = null
   }
 }
-
 
 function render(evt){
   updateBoard()
 }
-
 
 function updateBoard(){
   board.forEach(function(value, idx) {
@@ -65,7 +64,7 @@ function updateBoard(){
 
 function placePiece(sqIdx, firstClick, firstClickId){
   squareEls.forEach(function (el) {
-    el.addEventListener('click', function(){
+    el.addEventListener('click', function(firstClickId){
       //The new element id
       secondClickId = el.id.slice(2,5)
       board[secondClickId].occupied = Number(firstClick)
