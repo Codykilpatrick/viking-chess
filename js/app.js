@@ -4,7 +4,7 @@
 import {board} from "./board.js"
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, winner, tie, player
+let turn, winner, tie, player, firstClick
 
 
 /*------------------------ Cached Element References ---------------------*/
@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', init)
 squareEls.forEach(function (el) {
   el.addEventListener('click', handleClick)
 })
+
 resetBtnEl.addEventListener('click', init)
 
 /*-------------------------------- Functions -----------------------------*/
@@ -28,11 +29,22 @@ function init(evt){
 }
 
 function handleClick(evt){
+  //Square index
   const sqIdx = evt.target.id.slice(2,5);
+  //Square HTML element
   const sq = evt.target
-  console.log(sqIdx);
-  console.log(sq);
+  //Sq value
+  const sqValue = sq.innerText
+  // console.log("Square Index", sqIdx);
+  // console.log("Square html element", sq);
+  firstClick = sq.innerText
+  if (firstClick === "1" || firstClick === "-1"){
+    placePiece(sqIdx, firstClick)
+  }
+
+  render()
 }
+
 
 function render(evt){
   updateBoard()
@@ -56,3 +68,14 @@ function updateBoard(){
     }
     })
 };
+
+function placePiece(sqIdx, firstClick){
+  squareEls.forEach(function (el) {
+    el.addEventListener('click', function(){
+      //The new element id
+      let secondClickId = el.id.slice(2,5)
+      board[secondClickId].occupied = Number(firstClick)
+      render()
+    })
+  })
+}
