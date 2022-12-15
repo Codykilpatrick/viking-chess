@@ -4,7 +4,7 @@
 import {board} from "./board.js"
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, winner, tie, player, firstClick
+let turn, winner, tie, player, firstClick, firstClickId, secondClickId
 
 
 /*------------------------ Cached Element References ---------------------*/
@@ -30,19 +30,13 @@ function init(evt){
 
 function handleClick(evt){
   //Square index
-  const sqIdx = evt.target.id.slice(2,5);
+  firstClickId = evt.target.id.slice(2,5);
   //Square HTML element
   const sq = evt.target
-  //Sq value
-  const sqValue = sq.innerText
-  // console.log("Square Index", sqIdx);
-  // console.log("Square html element", sq);
   firstClick = sq.innerText
   if (firstClick === "1" || firstClick === "-1"){
-    placePiece(sqIdx, firstClick)
+    placePiece(firstClickId, firstClick)
   }
-
-  render()
 }
 
 
@@ -69,13 +63,14 @@ function updateBoard(){
     })
 };
 
-function placePiece(sqIdx, firstClick){
+function placePiece(sqIdx, firstClick, firstClickId){
   squareEls.forEach(function (el) {
     el.addEventListener('click', function(){
       //The new element id
-      let secondClickId = el.id.slice(2,5)
+      secondClickId = el.id.slice(2,5)
       board[secondClickId].occupied = Number(firstClick)
       render()
+      firstClick = ' '
     })
   })
 }
