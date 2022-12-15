@@ -19,9 +19,14 @@ section.board {
   color: #FF10F0;
   border: red solid 1px;
   margin: auto;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 }
 
 section.board > * {
   border: red solid 1px;
+}
+
+.refuge,
+.throne {
+  background-color: white;
 }
