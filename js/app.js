@@ -4,8 +4,8 @@
 import {board} from "./board.js"
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, winner, tie, player, firstClick, firstClickId, secondClickId
-
+let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget
+let firstClick = 0
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -17,6 +17,9 @@ const resetBtnEl = document.querySelector("button")
 document.addEventListener('DOMContentLoaded', init)
 squareEls.forEach(function (el) {
   el.addEventListener('click', handleClick)
+})
+squareEls.forEach(function (el) {
+  el.addEventListener('mouseover', possibleMoves)
 })
 
 resetBtnEl.addEventListener('click', init)
@@ -36,7 +39,8 @@ function handleClick(evt){
   firstClick = sq.innerText
   if (firstClick === "1" || firstClick === "-1"){
     placePiece(firstClick)
-    board[firstClickId].occupied = null
+    board[firstClickId].occupied = 0
+    console.log(board);
   }
 }
 
@@ -47,7 +51,7 @@ function render(evt){
 function updateBoard(){
   board.forEach(function(value, idx) {
     value = squareEls[idx]
-    if (board[idx].occupied === null){
+    if (board[idx].occupied === 0){
       value.innerText = ""
     }
     else if (board[idx].occupied === 1){
@@ -69,8 +73,18 @@ function placePiece(firstClick){
       secondClickId = el.id.slice(2,5)
       board[secondClickId].occupied = Number(firstClick)
       render()
-      firstClick = ' '
+      firstClick = 0
     })
   })
 }
 
+function possibleMoves(evt) {
+  squareEls.forEach(function (el) {
+    el.style.background ="black"
+  })
+  hoverTarget = evt.target
+  if (hoverTarget.innerText === "1"){
+    console.log(hoverTarget);
+    hoverTarget.style.background ="grey"
+  }
+}
