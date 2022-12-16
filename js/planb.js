@@ -13,7 +13,7 @@ const squareEls = document.querySelectorAll(".sqr")
 const resetBtnEl = document.querySelector("button")
 
 /*----------------------------- Event Listeners --------------------------*/
-
+console.log(firstClick);
 document.addEventListener('DOMContentLoaded', init)
 squareEls.forEach(function (el) {
   el.addEventListener('click', handleClick)
@@ -34,10 +34,14 @@ function handleClick(evt){
   //Square HTML element
   const sq = evt.target
   firstClick = sq.innerText
-  if (firstClick === "1" || firstClick === "-1"){
-    placePiece(firstClick)
-    board[firstClickId].occupied = null
-  }
+  placePiece(firstClickId, firstClick)
+  // if (firstClick === "1" || firstClick === "-1"){
+  //   console.log(firstClickId);
+    // board[firstClickId].occupied = null
+    // firstClick = null
+    // return
+  // }
+  console.log(board);
 }
 
 function render(evt){
@@ -62,15 +66,19 @@ function updateBoard(){
     })
 };
 
-function placePiece(firstClick){
+function placePiece(firstClickId, x){
+  if (firstClick === "1" || firstClick === "-1"){
   squareEls.forEach(function (el) {
     el.addEventListener('click', function(){
       //The new element id
       secondClickId = el.id.slice(2,5)
-      board[secondClickId].occupied = Number(firstClick)
+      console.log("Before", board[secondClickId].occupied);
+      board[secondClickId].occupied = parseInt(x)
+      board[firstClickId].occupied = null
+      console.log("After", board[secondClickId].occupied);
       render()
-      firstClick = ' '
+      firstClick = null
+      // return
     })
   })
-}
-
+  }}
