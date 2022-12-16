@@ -87,8 +87,8 @@ function possibleMoves(evt) {
   }
   //Left side possible moves
   for (let i = 0; i < 10; i++){
-    let leftPiece = hoverTarget.id.slice(2,5)
-    leftPiece = leftPiece - i
+    let leftPiece = +hoverTarget.id.slice(2,5)
+    leftPiece = Number(leftPiece) - i
     squareEls[leftPiece].style.background="grey"
     if (board[leftPiece].isEdge === true || board[leftPiece - 1].occupied){
       break
@@ -96,7 +96,7 @@ function possibleMoves(evt) {
   }
   //Right side possible moves
   for (let i = 0; i < 10; i++){
-    let rightPiece = hoverTarget.id.slice(2,5)
+    let rightPiece = +hoverTarget.id.slice(2,5)
     rightPiece = Number(rightPiece) + i
     squareEls[rightPiece].style.background="grey"
     if (board[rightPiece].isEdge === true || board[rightPiece + 1].occupied){
@@ -104,23 +104,26 @@ function possibleMoves(evt) {
     }
   }
 
-  //Below possible moves
-  let belowPiece = hoverTarget.id.slice(2,5)
-  for (let i = 0; i < 10; i++){
-    belowPiece = Number(belowPiece) + 11
-    squareEls[belowPiece].style.background="grey"
+ //Below possible moves
+  let belowPiece = +hoverTarget.id.slice(2,5)
+  for (let i = 0; i < 11; i++){
+    // console.log(board[belowPiece - 11]);
     if (board[belowPiece].isEdge === true || board[belowPiece + 11].occupied){
       break
     }
+    belowPiece = Number(belowPiece) + 11
+    squareEls[belowPiece].style.background="grey"
   }
 
     //Above possible moves
-    let abovePiece = hoverTarget.id.slice(2,5)
-    for (let i = 0; i < 10; i++){
-      abovePiece = Number(abovePiece) - 11
-      squareEls[abovePiece].style.background="grey"
+    let abovePiece = +hoverTarget.id.slice(2,5)
+    // console.log(board[abovePiece]);
+    for (let i = 0; i < 11; i++){
+      // console.log(board[belowPiece - 11]);
       if (board[abovePiece].isEdge === true || board[abovePiece - 11].occupied){
         break
       }
+      abovePiece = Number(abovePiece) - 11
+      squareEls[abovePiece].style.background="grey"
     }
 }
