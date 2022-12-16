@@ -8,7 +8,7 @@ const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget
-
+let firstClick = ''
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -35,7 +35,7 @@ function init(evt){
 }
 
 function handleClick(evt){
-  let firstClick = ''
+  firstClick = ''
   //Square index
   firstClickId = evt.target.id.slice(2,5);
   //Square HTML element
@@ -75,12 +75,31 @@ function placePiece(firstClick){
     el.addEventListener('click', function(){
       //The new element id
       secondClickId = el.id.slice(2,5)
+      // checkValidMoves(secondClickId, el)
       board[secondClickId].occupied = Number(firstClick)
       render()
-      firstClick = 0
+      firstClick = ''
     })
   })
 }
+
+ // function checkValidMoves(secondClickId, el){
+  //   secondClickId = +secondClickId
+  //   //left valid moves
+  //   console.log(el);
+  //   if (board[secondClickId].occupied === 1){
+  //     console.log("Invalid move!");
+  //     return
+  //   }
+  // } 
+//     else {
+//       for (let i = 0; i < 10; i++){
+//         console.log("Valid move!");
+//         return
+//       }
+//       secondClickId = Number(secondClickId) - i
+//   }
+// }
 
 function possibleMoves(evt) {
   squareEls.forEach(function (el) {
@@ -106,9 +125,6 @@ function moveEdgePiece(evt, hoverTarget){
   for (let i = 0; i < 10; i++){
     let leftPiece = +hoverTarget.id.slice(2,5)
     if (leftEdgeIndex.includes(leftPiece)){
-      break
-    }
-    if (board[leftPiece].isEdge && board[leftPiece -1].isEdge){
       break
     }
     leftPiece = Number(leftPiece) - i
