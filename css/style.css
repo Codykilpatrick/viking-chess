@@ -28,5 +28,5 @@ section.board > * {
 
 .refuge,
 .throne {
-  background-color: white;
+  background-color: white !important;
 }
