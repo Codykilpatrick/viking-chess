@@ -103,4 +103,24 @@ function possibleMoves(evt) {
       break
     }
   }
+
+  //Below possible moves
+  let belowPiece = hoverTarget.id.slice(2,5)
+  for (let i = 0; i < 10; i++){
+    belowPiece = Number(belowPiece) + 11
+    squareEls[belowPiece].style.background="grey"
+    if (board[belowPiece].isEdge === true){
+      break
+    }
+  }
+
+    //Above possible moves
+    let abovePiece = hoverTarget.id.slice(2,5)
+    for (let i = 0; i < 10; i++){
+      abovePiece = Number(abovePiece) - 11
+      squareEls[abovePiece].style.background="grey"
+      if (board[abovePiece].isEdge === true){
+        break
+      }
+    }
 }
