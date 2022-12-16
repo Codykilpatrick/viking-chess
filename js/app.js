@@ -3,6 +3,9 @@
 
 import {board} from "./board.js"
 
+const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 99, 109]
+const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
+
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget
 let firstClick = 0
@@ -84,20 +87,72 @@ function possibleMoves(evt) {
   hoverTarget = evt.target
   if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
     hoverTarget.style.background ="grey"
+  
     
-      // let edgePiece = +hoverTarget.id.slice(2,5)
-      // if (board[edgePiece].isEdge === true && board[edgePiece].occupied){
-      //   console.log("Occupied edge piece");
-      // }
-    
-    
-    
-    
-      //FOR NON EDGE-Pieces
-    moveInnerPiece(evt, hoverTarget)
+let boardEdge = hoverTarget.id.slice(2,5)
+if (board[boardEdge].isEdge){
+  moveEdgePiece(evt, hoverTarget)}
+else {
+  moveInnerPiece(evt, hoverTarget)}
 }
 
 
+}
+
+function moveEdgePiece(evt, hoverTarget){
+  //Left side possible moves
+  for (let i = 0; i < 10; i++){
+    let leftPiece = +hoverTarget.id.slice(2,5)
+    if (leftEdgeIndex.includes(leftPiece)){
+      break
+    }
+    if (board[leftPiece].isEdge && board[leftPiece -1].isEdge){
+      break
+    }
+    leftPiece = Number(leftPiece) - i
+    squareEls[leftPiece].style.background="grey"
+    if (board[leftPiece].isRefuge === true || board[leftPiece - 1].occupied){
+      break
+    }
+  }
+  //Right side possible moves
+  for (let i = 0; i < 10; i++){
+    let rightPiece = +hoverTarget.id.slice(2,5)
+    if (rightEdgeIndex.includes(rightPiece)){
+      break
+    }
+    rightPiece = Number(rightPiece) + i
+    squareEls[rightPiece].style.background="grey"
+    if (board[rightPiece].isRefuge === true || board[rightPiece + 1].occupied){
+      break
+    }
+  }
+
+ //Below possible moves
+  let belowPiece = +hoverTarget.id.slice(2,5)
+  for (let i = 0; i < 11; i++){
+    if (belowPiece > 110) {
+      break
+    }
+    if (board[belowPiece].isRefuge === true || board[belowPiece + 11].occupied){
+      break
+    }
+    belowPiece = Number(belowPiece) + 11
+    squareEls[belowPiece].style.background="grey"
+  }
+
+    //Above possible moves
+    let abovePiece = +hoverTarget.id.slice(2,5)
+    for (let i = 0; i < 11; i++){
+      if (abovePiece < 10) {
+        return
+      }
+      if (board[abovePiece].isRefuge === true || board[abovePiece - 11].occupied){
+        break
+      }
+      abovePiece = Number(abovePiece) - 11
+      squareEls[abovePiece].style.background="grey"
+    }
 }
 
 function moveInnerPiece(evt, hoverTarget){
