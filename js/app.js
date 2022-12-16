@@ -40,7 +40,6 @@ function handleClick(evt){
   if (firstClick === "1" || firstClick === "-1"){
     placePiece(firstClick)
     board[firstClickId].occupied = 0
-    console.log(board);
   }
 }
 
@@ -60,7 +59,7 @@ function updateBoard(){
     else if (board[idx].occupied === -1){
       value.innerText = "-1"
     }
-    else if (board[idx].occupied === "K"){
+    else if (board[idx].occupied === 2){
       value.innerText = "K"
     }
     })
@@ -83,8 +82,7 @@ function possibleMoves(evt) {
     el.style.background ="black"
   })
   hoverTarget = evt.target
-  if (hoverTarget.innerText === "1"){
-    console.log(hoverTarget);
+  if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
     hoverTarget.style.background ="grey"
   }
 }
