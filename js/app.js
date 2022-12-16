@@ -8,7 +8,7 @@ const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget
-let firstClick = 0
+
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -35,14 +35,16 @@ function init(evt){
 }
 
 function handleClick(evt){
+  let firstClick = ''
   //Square index
   firstClickId = evt.target.id.slice(2,5);
   //Square HTML element
   const sq = evt.target
   firstClick = sq.innerText
+  board[firstClickId].occupied = 0
+  render()
   if (firstClick === "1" || firstClick === "-1"){
     placePiece(firstClick)
-    board[firstClickId].occupied = 0
   }
 }
 
