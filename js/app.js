@@ -90,7 +90,7 @@ function possibleMoves(evt) {
     let leftPiece = hoverTarget.id.slice(2,5)
     leftPiece = leftPiece - i
     squareEls[leftPiece].style.background="grey"
-    if (board[leftPiece].isEdge === true){
+    if (board[leftPiece].isEdge === true || board[leftPiece - 1].occupied){
       break
     }
   }
@@ -99,7 +99,7 @@ function possibleMoves(evt) {
     let rightPiece = hoverTarget.id.slice(2,5)
     rightPiece = Number(rightPiece) + i
     squareEls[rightPiece].style.background="grey"
-    if (board[rightPiece].isEdge === true){
+    if (board[rightPiece].isEdge === true || board[rightPiece + 1].occupied){
       break
     }
   }
@@ -109,7 +109,7 @@ function possibleMoves(evt) {
   for (let i = 0; i < 10; i++){
     belowPiece = Number(belowPiece) + 11
     squareEls[belowPiece].style.background="grey"
-    if (board[belowPiece].isEdge === true){
+    if (board[belowPiece].isEdge === true || board[belowPiece + 11].occupied){
       break
     }
   }
@@ -119,7 +119,7 @@ function possibleMoves(evt) {
     for (let i = 0; i < 10; i++){
       abovePiece = Number(abovePiece) - 11
       squareEls[abovePiece].style.background="grey"
-      if (board[abovePiece].isEdge === true){
+      if (board[abovePiece].isEdge === true || board[abovePiece - 11].occupied){
         break
       }
     }
