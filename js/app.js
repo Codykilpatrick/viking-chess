@@ -85,4 +85,22 @@ function possibleMoves(evt) {
   if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
     hoverTarget.style.background ="grey"
   }
+  //Left side possible moves
+  for (let i = 0; i < 10; i++){
+    let leftPiece = hoverTarget.id.slice(2,5)
+    leftPiece = leftPiece - i
+    squareEls[leftPiece].style.background="grey"
+    if (board[leftPiece].isEdge === true){
+      break
+    }
+  }
+  //Right side possible moves
+  for (let i = 0; i < 10; i++){
+    let rightPiece = hoverTarget.id.slice(2,5)
+    rightPiece = Number(rightPiece) + i
+    squareEls[rightPiece].style.background="grey"
+    if (board[rightPiece].isEdge === true){
+      break
+    }
+  }
 }
