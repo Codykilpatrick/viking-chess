@@ -84,7 +84,23 @@ function possibleMoves(evt) {
   hoverTarget = evt.target
   if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
     hoverTarget.style.background ="grey"
-  }
+    
+      // let edgePiece = +hoverTarget.id.slice(2,5)
+      // if (board[edgePiece].isEdge === true && board[edgePiece].occupied){
+      //   console.log("Occupied edge piece");
+      // }
+    
+    
+    
+    
+      //FOR NON EDGE-Pieces
+    moveInnerPiece(evt, hoverTarget)
+}
+
+
+}
+
+function moveInnerPiece(evt, hoverTarget){
   //Left side possible moves
   for (let i = 0; i < 10; i++){
     let leftPiece = +hoverTarget.id.slice(2,5)
@@ -107,7 +123,6 @@ function possibleMoves(evt) {
  //Below possible moves
   let belowPiece = +hoverTarget.id.slice(2,5)
   for (let i = 0; i < 11; i++){
-    // console.log(board[belowPiece - 11]);
     if (board[belowPiece].isEdge === true || board[belowPiece + 11].occupied){
       break
     }
@@ -117,13 +132,11 @@ function possibleMoves(evt) {
 
     //Above possible moves
     let abovePiece = +hoverTarget.id.slice(2,5)
-    // console.log(board[abovePiece]);
     for (let i = 0; i < 11; i++){
-      // console.log(board[belowPiece - 11]);
       if (board[abovePiece].isEdge === true || board[abovePiece - 11].occupied){
         break
       }
       abovePiece = Number(abovePiece) - 11
       squareEls[abovePiece].style.background="grey"
     }
-}
+  }
