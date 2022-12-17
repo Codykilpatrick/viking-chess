@@ -7,9 +7,9 @@ const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 99, 109]
 const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget
+let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
 let firstClick = ''
-let clickCount = 0
+let clickCount = 0 
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -36,12 +36,13 @@ function init(evt){
 }
 
 function handleClick(evt){
+  console.log(clickCount);
   //Square index
-  firstClickId = evt.target.id.slice(2,5);
-  const sq = evt.target
+  sq = evt.target
   //! console.log(clickCount);
   //If the piece grabber click hasnt happened
   if (clickCount === 0){
+    firstClickId = +evt.target.id.slice(2,5);
     firstClick = sq.innerText
     //run first click
     clickOne(firstClickId)
@@ -51,32 +52,38 @@ function handleClick(evt){
     return
     //If the piece grabber click has happened
   } if (clickCount === 1) {
-    secondClickId = evt.target.id.slice(2,5);
+    secondClickId = +evt.target.id.slice(2,5);
     //run secondclick
-    placePiece(firstClick, secondClickId)
+    placePiece(firstClick, secondClickId, firstClickId)
     //reset click count
     clickCount = 0
   }
+  console.log("First click", firstClick);
+  console.log("First Click Id", firstClickId);
+  console.log("Second Click Id", secondClickId);
 }
 function clickOne(firstClickId){
   board[firstClickId].occupied = 0
-  render()
+  // render()
 }
 
-function placePiece(firstClick, secondClickId){
-  checkValidMoves(secondClickId)
-  board[secondClickId].occupied = Number(firstClick)
-  firstClick = ' '
-  render()
+function placePiece(firstClick, secondClickId, firstClickId){
+  if (checkValidMoves(secondClickId) === true){
+    board[secondClickId].occupied = Number(firstClick)
+    render()
+  } else {
+    board[firstClickId].occupied = firstClick
+    render()
+  }
 }
 
 function checkValidMoves(secondClickId){
   secondClickId = +secondClickId
   //left valid moves
-  console.log(board[secondClickId].occupied);
-  if (board[secondClickId].occupied === -1){
-      console.log("Invalid move!");
-    }
+  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1){
+    console.log("Invalid move!");
+      return false
+    } else return true
 }
 //! ----------------------Render Functionality------------------------------
 function render(evt){
