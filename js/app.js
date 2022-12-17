@@ -85,6 +85,10 @@ function checkValidMoves(secondClickId){
       return false
     } else return true
 }
+
+// for (let i = 0; i < 10; i++){
+//   leftPiece = Number(leftPiece) - i
+
 //! ----------------------Render Functionality------------------------------
 function render(evt){
   updateBoard()
