@@ -10,6 +10,7 @@ const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
 let firstClick = ''
 let clickCount = 0 
+let validMoves = []
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -36,7 +37,6 @@ function init(evt){
 }
 
 function handleClick(evt){
-  console.log(turn);
   //Square index
   sq = evt.target
   if (+sq.innerText !== turn && clickCount === 0){
@@ -79,21 +79,41 @@ function placePiece(firstClick, secondClickId, firstClickId){
   }
 }
 
-function checkValidMoves(secondClickId){
+function checkValidMoves(secondClickId, firstClickId){
   secondClickId = +secondClickId
-  //left valid moves
+  //checks if space is occupied
   if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1){
     console.log("Invalid move!");
     turn *= -1
       return false
-    } else return true
+  } 
+  if (squareChecker(secondClickId)){
+    console.log("Square checker returned true");
+  }
+  else {
+    return true
+  }
 }
-
-// for (let i = 0; i < 10; i++){
-//   leftPiece = Number(leftPiece) - i
-
-//! ----------------------Render Functionality------------------------------
-function render(evt){
+  //Checks to make sure move is on a valid square
+  function squareChecker(){
+  // left side checker
+  for (let i = 1; i < 11; i++){
+    let leftSide = Number(firstClickId) - i
+    if (board[leftSide].occupied){
+      break
+    }
+    if (rightEdgeIndex.includes(leftSide)){
+      break
+    }
+    if (board[leftSide].isRefuge){
+      break
+    }
+    validMoves.push(leftSide)
+  }
+  console.log(validMoves);
+}
+  //! ----------------------Render Functionality------------------------------
+  function render(evt){
   updateBoard()
 }
 
