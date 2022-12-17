@@ -9,6 +9,7 @@ const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget
 let firstClick = ''
+let clickCount = 0
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -35,17 +36,44 @@ function init(evt){
 }
 
 function handleClick(evt){
-  firstClick = ''
   //Square index
   firstClickId = evt.target.id.slice(2,5);
+  console.log(clickCount);
+  //If the piece grabber click hasnt happened
+  if (clickCount === 0){
+    //run first click
+    clickOne(evt, firstClickId)
+    // render()
+    //increment clickcount
+    clickCount++
+    //If the piece grabber click has happened
+  } if (clickCount === 1) {
+    //run secondclick
+    placePiece(firstClick)
+    //reset click count
+    clickCount = 0
+  }
+}
+function clickOne(evt, firstClickId){
   //Square HTML element
   const sq = evt.target
+  firstClick = ''
   firstClick = sq.innerText
   board[firstClickId].occupied = 0
   render()
-  if (firstClick === "1" || firstClick === "-1"){
-    placePiece(firstClick)
-  }
+}
+
+function placePiece(firstClick){
+  squareEls.forEach(function (el) {
+    el.addEventListener('click', function(){
+      //The new element id
+      secondClickId = el.id.slice(2,5)
+      // checkValidMoves(secondClickId, el)
+      board[secondClickId].occupied = Number(firstClick)
+      render()
+      console.log(board);
+    })
+  })
 }
 
 function render(evt){
@@ -70,18 +98,6 @@ function updateBoard(){
     })
 };
 
-function placePiece(firstClick){
-  squareEls.forEach(function (el) {
-    el.addEventListener('click', function(){
-      //The new element id
-      secondClickId = el.id.slice(2,5)
-      // checkValidMoves(secondClickId, el)
-      board[secondClickId].occupied = Number(firstClick)
-      render()
-      firstClick = ''
-    })
-  })
-}
 
  // function checkValidMoves(secondClickId, el){
   //   secondClickId = +secondClickId
