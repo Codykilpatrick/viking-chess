@@ -36,10 +36,12 @@ function init(evt){
 }
 
 function handleClick(evt){
-  console.log(clickCount);
   //Square index
   sq = evt.target
-  //! console.log(clickCount);
+  if (+sq.innerText !== turn && clickCount === 0){
+    clickCount = 0
+    return
+  }
   //If the piece grabber click hasnt happened
   if (clickCount === 0){
     firstClickId = +evt.target.id.slice(2,5);
@@ -57,10 +59,8 @@ function handleClick(evt){
     placePiece(firstClick, secondClickId, firstClickId)
     //reset click count
     clickCount = 0
+    turn *= -1
   }
-  console.log("First click", firstClick);
-  console.log("First Click Id", firstClickId);
-  console.log("Second Click Id", secondClickId);
 }
 function clickOne(firstClickId){
   board[firstClickId].occupied = 0
