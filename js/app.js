@@ -38,44 +38,47 @@ function init(evt){
 function handleClick(evt){
   //Square index
   firstClickId = evt.target.id.slice(2,5);
-  console.log(clickCount);
+  const sq = evt.target
+  //! console.log(clickCount);
   //If the piece grabber click hasnt happened
   if (clickCount === 0){
+    firstClick = sq.innerText
     //run first click
-    clickOne(evt, firstClickId)
+    clickOne(firstClickId)
     // render()
     //increment clickcount
     clickCount++
+    return
     //If the piece grabber click has happened
   } if (clickCount === 1) {
+    secondClickId = evt.target.id.slice(2,5);
     //run secondclick
-    placePiece(firstClick)
+    placePiece(firstClick, secondClickId)
     //reset click count
     clickCount = 0
   }
 }
-function clickOne(evt, firstClickId){
-  //Square HTML element
-  const sq = evt.target
-  firstClick = ''
-  firstClick = sq.innerText
+function clickOne(firstClickId){
   board[firstClickId].occupied = 0
   render()
 }
 
-function placePiece(firstClick){
-  squareEls.forEach(function (el) {
-    el.addEventListener('click', function(){
-      //The new element id
-      secondClickId = el.id.slice(2,5)
-      // checkValidMoves(secondClickId, el)
-      board[secondClickId].occupied = Number(firstClick)
-      render()
-      console.log(board);
-    })
-  })
+function placePiece(firstClick, secondClickId){
+  checkValidMoves(secondClickId)
+  board[secondClickId].occupied = Number(firstClick)
+  firstClick = ' '
+  render()
 }
 
+function checkValidMoves(secondClickId){
+  secondClickId = +secondClickId
+  //left valid moves
+  console.log(board[secondClickId].occupied);
+  if (board[secondClickId].occupied === -1){
+      console.log("Invalid move!");
+    }
+}
+//! ----------------------Render Functionality------------------------------
 function render(evt){
   updateBoard()
 }
@@ -99,26 +102,9 @@ function updateBoard(){
 };
 
 
- // function checkValidMoves(secondClickId, el){
-  //   secondClickId = +secondClickId
-  //   //left valid moves
-  //   console.log(el);
-  //   if (board[secondClickId].occupied === 1){
-  //     console.log("Invalid move!");
-  //     return
-  //   }
-  // } 
-//     else {
-//       for (let i = 0; i < 10; i++){
-//         console.log("Valid move!");
-//         return
-//       }
-//       secondClickId = Number(secondClickId) - i
-//   }
-// }
-
-function possibleMoves(evt) {
-  squareEls.forEach(function (el) {
+//! ------------------Hover functionality---------------------
+        function possibleMoves(evt) {
+          squareEls.forEach(function (el) {
     el.style.background ="black"
   })
   hoverTarget = evt.target
