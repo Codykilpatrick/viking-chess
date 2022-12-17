@@ -135,8 +135,10 @@ function checkValidMoves(secondClickId, firstClickId){
   }
 
   if (validMoves.includes(secondClickId)){
+    console.log("Valid move!");
     return true
   } else {
+    console.log("Invalid move!");
     return false
   }
 }
