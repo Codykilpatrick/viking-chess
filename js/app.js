@@ -58,10 +58,10 @@ function handleClick(evt){
     secondClickId = +evt.target.id.slice(2,5);
     //run secondclick
     placePiece(firstClick, secondClickId, firstClickId)
-    //reset click count
+    //reset click count, update the message, change the turn
     clickCount = 0
-    updateMessage()
     turn *= -1
+    updateMessage()
   }
 }
 function clickOne(firstClickId){
@@ -116,7 +116,7 @@ function updateBoard(){
 };
 
 function updateMessage() {
-  if (turn === -1){
+  if (turn === 1){
     messageEl.innerText = "It's player one's turn!"
   } else {
     messageEl.innerText = "Its player two's turn!"
