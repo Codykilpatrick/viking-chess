@@ -62,7 +62,7 @@ function handleClick(evt){
     placePiece(firstClick, secondClickId, firstClickId)
     //reset click count, update the message, change the turn
     clickCount = 0
-    turn *= -1
+
     updateMessage()
   }
 }
@@ -74,6 +74,7 @@ function clickOne(firstClickId){
 function placePiece(firstClick, secondClickId, firstClickId){
   if (checkValidMoves(secondClickId) === true){
     board[secondClickId].occupied = Number(firstClick)
+    turn *= -1
     render()
   } else {
     board[firstClickId].occupied = firstClick
@@ -86,59 +87,40 @@ function checkValidMoves(secondClickId, firstClickId){
   //checks if space is occupied
   if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1){
     console.log("Invalid move!");
-    turn *= -1
-      return false
+    return false
   } 
-  if (squareChecker(secondClickId)){
-    console.log("Square checker returned true");
+  if (!squareChecker(secondClickId)){
+    validMoves = []
+    return false
   }
   else {
+    // turn *= -1
+    validMoves = []
     return true
   }
 }
   //Checks to make sure move is on a valid square
   function squareChecker(){
-  // left side checker
-  // for (let i = 1; i < 11; i++){
-  //   let leftSide = Number(firstClickId) - i
-  //   if (board[leftSide].occupied){
-  //     break
-  //   }
-  //   if (rightEdgeIndex.includes(leftSide)){
-  //     break
-  //   }
-  //   if (board[leftSide].isRefuge){
-  //     break
-  //   }
-  //   validMoves.push(leftSide)
-  // }
-  // //Right side checker
-  // for (let i = 1; i < 11; i++){
-  //   let rightSide = Number(firstClickId) + i
-  //   if (board[rightSide].occupied){
-  //     break
-  //   }
-  //   if (leftEdgeIndex.includes(rightSide)){
-  //     break
-  //   }
-  //   if (board[rightSide].isRefuge){
-  //     break
-  //   }
-  //   validMoves.push(rightSide)
-  // }
+  //left side checker
+  for (let i = 1; i < 11; i++){
+    let leftSide = Number(firstClickId) - i
+    if (board[leftSide].occupied || rightEdgeIndex.includes(leftSide) || board[leftSide].isRefuge){
+      break
+    }
+    validMoves.push(leftSide)
+  }
+  //Right side checker
+  for (let i = 1; i < 11; i++){
+    let rightSide = Number(firstClickId) + i
+    if (board[rightSide].occupied || leftEdgeIndex.includes(rightSide) || board[rightSide].isRefuge){
+      break
+    }
+    validMoves.push(rightSide)
+  }
   //Top side checker
   for (let i = 1; i < 11; i++){
     let topSide = Number(firstClickId) - (i * 11)
-    if (topSide < 0){
-      break
-    }
-    if (board[topSide].occupied){
-      break
-    }
-    if (bottomEdgeIndex.includes(topSide)){
-      break
-    }
-    if (board[topSide].isRefuge){
+    if (topSide < 0 || board[topSide].occupied || bottomEdgeIndex.includes(topSide) || board[topSide].isRefuge){
       break
     }
     validMoves.push(topSide)
@@ -146,21 +128,17 @@ function checkValidMoves(secondClickId, firstClickId){
   //bottom side checker
   for (let i = 1; i < 11; i++){
     let bottomSide = Number(firstClickId) + (i * 11)
-    if (bottomSide > 120){
-      break
-    }
-    if (board[bottomSide].occupied){
-      break
-    }
-    if (topEdgeIndex.includes(bottomSide)){
-      break
-    }
-    if (board[bottomSide].isRefuge){
+    if (bottomSide > 120 || board[bottomSide].occupied || topEdgeIndex.includes(bottomSide) || board[bottomSide].isRefuge){
       break
     }
     validMoves.push(bottomSide)
   }
-  console.log(validMoves);
+
+  if (validMoves.includes(secondClickId)){
+    return true
+  } else {
+    return false
+  }
 }
   //! ----------------------Render Functionality------------------------------
   function render(evt){
