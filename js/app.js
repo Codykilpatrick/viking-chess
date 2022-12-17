@@ -143,6 +143,23 @@ function checkValidMoves(secondClickId, firstClickId){
     }
     validMoves.push(topSide)
   }
+  //bottom side checker
+  for (let i = 1; i < 11; i++){
+    let bottomSide = Number(firstClickId) + (i * 11)
+    if (bottomSide > 120){
+      break
+    }
+    if (board[bottomSide].occupied){
+      break
+    }
+    if (topEdgeIndex.includes(bottomSide)){
+      break
+    }
+    if (board[bottomSide].isRefuge){
+      break
+    }
+    validMoves.push(bottomSide)
+  }
   console.log(validMoves);
 }
   //! ----------------------Render Functionality------------------------------
