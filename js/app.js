@@ -15,7 +15,7 @@ let clickCount = 0
 
 const squareEls = document.querySelectorAll(".sqr")
 const resetBtnEl = document.querySelector("button")
-
+const messageEl = document.getElementById("message")
 /*----------------------------- Event Listeners --------------------------*/
 
 document.addEventListener('DOMContentLoaded', init)
@@ -36,6 +36,7 @@ function init(evt){
 }
 
 function handleClick(evt){
+  console.log(turn);
   //Square index
   sq = evt.target
   if (+sq.innerText !== turn && clickCount === 0){
@@ -59,6 +60,7 @@ function handleClick(evt){
     placePiece(firstClick, secondClickId, firstClickId)
     //reset click count
     clickCount = 0
+    updateMessage()
     turn *= -1
   }
 }
@@ -82,6 +84,7 @@ function checkValidMoves(secondClickId){
   //left valid moves
   if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1){
     console.log("Invalid move!");
+    turn *= -1
       return false
     } else return true
 }
@@ -111,6 +114,14 @@ function updateBoard(){
     }
     })
 };
+
+function updateMessage() {
+  if (turn === -1){
+    messageEl.innerText = "It's player one's turn!"
+  } else {
+    messageEl.innerText = "Its player two's turn!"
+  }
+}
 
 
 //! ------------------Hover functionality---------------------
