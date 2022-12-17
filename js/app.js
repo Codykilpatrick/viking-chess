@@ -110,23 +110,19 @@ function updateBoard(){
 
 
 //! ------------------Hover functionality---------------------
-        function possibleMoves(evt) {
-          squareEls.forEach(function (el) {
-    el.style.background ="black"
-  })
+function possibleMoves(evt) {
+  squareEls.forEach(function (el) {
+  el.style.background ="black"
+})
   hoverTarget = evt.target
   if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
     hoverTarget.style.background ="grey"
-  
-    
-let boardEdge = hoverTarget.id.slice(2,5)
-if (board[boardEdge].isEdge){
-  moveEdgePiece(evt, hoverTarget)}
-else {
-  moveInnerPiece(evt, hoverTarget)}
-}
-
-
+    let boardEdge = hoverTarget.id.slice(2,5)
+    if (board[boardEdge].isEdge){
+      moveEdgePiece(evt, hoverTarget)}
+    else {
+      moveInnerPiece(evt, hoverTarget)}
+  }
 }
 
 function moveEdgePiece(evt, hoverTarget){
