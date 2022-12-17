@@ -5,6 +5,8 @@ import {board} from "./board.js"
 
 const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 99, 109]
 const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
+const topEdgeIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const bottomEdgeIndex = [111, 112, 113, 114, 115, 116, 117, 118, 119]
 
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
@@ -97,18 +99,49 @@ function checkValidMoves(secondClickId, firstClickId){
   //Checks to make sure move is on a valid square
   function squareChecker(){
   // left side checker
+  // for (let i = 1; i < 11; i++){
+  //   let leftSide = Number(firstClickId) - i
+  //   if (board[leftSide].occupied){
+  //     break
+  //   }
+  //   if (rightEdgeIndex.includes(leftSide)){
+  //     break
+  //   }
+  //   if (board[leftSide].isRefuge){
+  //     break
+  //   }
+  //   validMoves.push(leftSide)
+  // }
+  // //Right side checker
+  // for (let i = 1; i < 11; i++){
+  //   let rightSide = Number(firstClickId) + i
+  //   if (board[rightSide].occupied){
+  //     break
+  //   }
+  //   if (leftEdgeIndex.includes(rightSide)){
+  //     break
+  //   }
+  //   if (board[rightSide].isRefuge){
+  //     break
+  //   }
+  //   validMoves.push(rightSide)
+  // }
+  //Top side checker
   for (let i = 1; i < 11; i++){
-    let leftSide = Number(firstClickId) - i
-    if (board[leftSide].occupied){
+    let topSide = Number(firstClickId) - (i * 11)
+    if (topSide < 0){
       break
     }
-    if (rightEdgeIndex.includes(leftSide)){
+    if (board[topSide].occupied){
       break
     }
-    if (board[leftSide].isRefuge){
+    if (bottomEdgeIndex.includes(topSide)){
       break
     }
-    validMoves.push(leftSide)
+    if (board[topSide].isRefuge){
+      break
+    }
+    validMoves.push(topSide)
   }
   console.log(validMoves);
 }
