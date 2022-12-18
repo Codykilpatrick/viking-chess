@@ -64,7 +64,7 @@ function handleClick(evt){
     //reset click count, update the message, change the turn
     clickCount = 0
 
-    checkForCapture()
+    checkHorizontalCapture()
     checkVerticalCapture()
     updateMessage()
   }
@@ -247,7 +247,7 @@ function moveEdgePiece(evt, hoverTarget){
 
 function moveInnerPiece(evt, hoverTarget){
   //Left side possible moves
-  for (let i = 0; i < 10; i++){
+  for (let i = 0; i < 11; i++){
     let leftPiece = +hoverTarget.id.slice(2,5)
     leftPiece = Number(leftPiece) - i
     squareEls[leftPiece].style.background="grey"
@@ -256,7 +256,7 @@ function moveInnerPiece(evt, hoverTarget){
     }
   }
   //Right side possible moves
-  for (let i = 0; i < 10; i++){
+  for (let i = 0; i < 11; i++){
     let rightPiece = +hoverTarget.id.slice(2,5)
     rightPiece = Number(rightPiece) + i
     squareEls[rightPiece].style.background="grey"
@@ -288,12 +288,19 @@ function moveInnerPiece(evt, hoverTarget){
 
 
   //! ----------------------------Check for capture---------------------------------------
-function checkForCapture(){
+function checkHorizontalCapture(){
   for (let i = 1; i < board.length - 1; i++){
     //Left and right capture check
     let left = Math.sign(board[i - 1].occupied)
     let right = Math.sign(board[i + 1].occupied)
-    if (left === 0 ||right === 0 || Math.sign(board[i].occupied) === 0){
+    let center = Math.sign(board[i].occupied)
+    if (rightEdgeIndex.includes(board[i].boardIdx)){
+      continue
+    }
+    if (leftEdgeIndex.includes(board[i].boardIdx)){
+      continue
+    }
+    if (left === 0 ||right === 0 || center === 0){
       continue
     }
     if (left !== Math.sign(board[i].occupied) && right !== Math.sign(board[i].occupied)){
