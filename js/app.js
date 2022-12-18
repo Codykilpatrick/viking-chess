@@ -19,6 +19,7 @@ let validMoves = []
 const squareEls = document.querySelectorAll(".sqr")
 const resetBtnEl = document.querySelector("button")
 const messageEl = document.getElementById("message")
+const invalidEl = document.getElementById("invalid-move")
 /*----------------------------- Event Listeners --------------------------*/
 
 document.addEventListener('DOMContentLoaded', init)
@@ -88,6 +89,7 @@ function checkValidMoves(secondClickId, firstClickId){
   //checks if space is occupied
   if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2){
     console.log("Invalid move!");
+    invalidEl.innerText = "Invalid move!"
     return false
   } 
   if (!squareChecker(secondClickId)){
@@ -95,7 +97,7 @@ function checkValidMoves(secondClickId, firstClickId){
     return false
   }
   else {
-    // turn *= -1
+    invalidEl.innerText = ""
     validMoves = []
     return true
   }
