@@ -48,7 +48,7 @@ function handleClick(evt){
   //If the piece grabber click hasnt happened
   if (clickCount === 0){
     firstClickId = +evt.target.id.slice(2,5);
-    firstClick = sq.innerText
+    firstClick = board[firstClickId].occupied
     //run first click
     clickOne(firstClickId)
     // render()
@@ -65,6 +65,7 @@ function handleClick(evt){
 
     updateMessage()
   }
+  console.log(board);
 }
 function clickOne(firstClickId){
   board[firstClickId].occupied = 0
@@ -85,7 +86,7 @@ function placePiece(firstClick, secondClickId, firstClickId){
 function checkValidMoves(secondClickId, firstClickId){
   secondClickId = +secondClickId
   //checks if space is occupied
-  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1){
+  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2){
     console.log("Invalid move!");
     return false
   } 
