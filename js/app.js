@@ -64,9 +64,9 @@ function handleClick(evt){
     //reset click count, update the message, change the turn
     clickCount = 0
 
+    checkForCapture()
     updateMessage()
   }
-  console.log(board);
 }
 function clickOne(firstClickId){
   board[firstClickId].occupied = 0
@@ -138,15 +138,13 @@ function checkValidMoves(secondClickId, firstClickId){
   }
 
   if (validMoves.includes(secondClickId)){
-    console.log("Valid move!");
     return true
   } else {
-    console.log("Invalid move!");
     return false
   }
 }
   //! ----------------------Render Functionality------------------------------
-  function render(evt){
+  function render(){
   updateBoard()
 }
 
@@ -284,5 +282,25 @@ function moveInnerPiece(evt, hoverTarget){
       }
       abovePiece = Number(abovePiece) - 11
       squareEls[abovePiece].style.background="grey"
+    }
+  }
+
+
+  //! ----------------------------Check for capture---------------------------------------
+  function checkForCapture(){
+    console.log("Check for cap is running");
+    for (let i = 1; i < board.length - 1; i++){
+      //Left and right capture check
+      let left = Math.sign(board[i - 1].occupied)
+      let right = Math.sign(board[i + 1].occupied)
+      // console.log(Math.sign(board[i].occupied));
+      if (left === 0 ||right === 0 || Math.sign(board[i].occupied) === 0){
+        continue
+      }
+      if (Math.sign(board[i - 1].occupied) !== Math.sign(board[i].occupied) && Math.sign(board[i + 1].occupied) !== Math.sign(board[i].occupied)){
+      board[i].occupied = 0
+      console.log("capture");
+      render()
+      }
     }
   }
