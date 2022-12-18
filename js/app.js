@@ -194,7 +194,7 @@ function possibleMoves(evt) {
 
 function moveEdgePiece(evt, hoverTarget){
   //Left side possible moves
-  for (let i = 0; i < 10; i++){
+  for (let i = 0; i < 11; i++){
     let leftPiece = +hoverTarget.id.slice(2,5)
     if (leftEdgeIndex.includes(leftPiece)){
       break
@@ -206,7 +206,7 @@ function moveEdgePiece(evt, hoverTarget){
     }
   }
   //Right side possible moves
-  for (let i = 0; i < 10; i++){
+  for (let i = 0; i < 11; i++){
     let rightPiece = +hoverTarget.id.slice(2,5)
     if (rightEdgeIndex.includes(rightPiece)){
       break
@@ -247,7 +247,7 @@ function moveEdgePiece(evt, hoverTarget){
 
 function moveInnerPiece(evt, hoverTarget){
   //Left side possible moves
-  for (let i = 0; i < 11; i++){
+  for (let i = 0; i < 10; i++){
     let leftPiece = +hoverTarget.id.slice(2,5)
     leftPiece = Number(leftPiece) - i
     squareEls[leftPiece].style.background="grey"
@@ -256,7 +256,7 @@ function moveInnerPiece(evt, hoverTarget){
     }
   }
   //Right side possible moves
-  for (let i = 0; i < 11; i++){
+  for (let i = 0; i < 10; i++){
     let rightPiece = +hoverTarget.id.slice(2,5)
     rightPiece = Number(rightPiece) + i
     squareEls[rightPiece].style.background="grey"
@@ -294,6 +294,7 @@ function checkHorizontalCapture(){
     let left = Math.sign(board[i - 1].occupied)
     let right = Math.sign(board[i + 1].occupied)
     let center = Math.sign(board[i].occupied)
+
     if (rightEdgeIndex.includes(board[i].boardIdx)){
       continue
     }
