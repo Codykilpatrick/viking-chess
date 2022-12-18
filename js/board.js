@@ -64,7 +64,7 @@ export const board =
 {boardIdx: 57, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
 {boardIdx: 58, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
 {boardIdx: 59, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
-{boardIdx: 60, isRefuge: false, isEdge: false, isThrone: true, occupied: 2},
+{boardIdx: 60, isRefuge: false, isEdge: false, isThrone: true, occupied: -2},
 {boardIdx: 61, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
 {boardIdx: 62, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
 {boardIdx: 63, isRefuge: false, isEdge: false, isThrone: false, occupied: null},

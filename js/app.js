@@ -41,7 +41,7 @@ function init(evt){
 function handleClick(evt){
   //Square index
   sq = evt.target
-  if (+sq.innerText !== turn && clickCount === 0){
+  if (Math.sign(board[sq.id.slice(2,5)].occupied) !== turn && clickCount === 0){
     clickCount = 0
     return
   }
@@ -159,7 +159,7 @@ function updateBoard(){
     else if (board[idx].occupied === -1){
       value.innerText = "-1"
     }
-    else if (board[idx].occupied === 2){
+    else if (board[idx].occupied === -2){
       value.innerText = "K"
     }
     })
