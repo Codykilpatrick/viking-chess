@@ -65,6 +65,7 @@ function handleClick(evt){
     clickCount = 0
 
     checkForCapture()
+    checkVerticalCapture()
     updateMessage()
   }
 }
@@ -287,20 +288,32 @@ function moveInnerPiece(evt, hoverTarget){
 
 
   //! ----------------------------Check for capture---------------------------------------
-  function checkForCapture(){
-    console.log("Check for cap is running");
-    for (let i = 1; i < board.length - 1; i++){
-      //Left and right capture check
-      let left = Math.sign(board[i - 1].occupied)
-      let right = Math.sign(board[i + 1].occupied)
-      // console.log(Math.sign(board[i].occupied));
-      if (left === 0 ||right === 0 || Math.sign(board[i].occupied) === 0){
+function checkForCapture(){
+  for (let i = 1; i < board.length - 1; i++){
+    //Left and right capture check
+    let left = Math.sign(board[i - 1].occupied)
+    let right = Math.sign(board[i + 1].occupied)
+    if (left === 0 ||right === 0 || Math.sign(board[i].occupied) === 0){
+      continue
+    }
+    if (left !== Math.sign(board[i].occupied) && right !== Math.sign(board[i].occupied)){
+      board[i].occupied = 0
+      render()
+    }
+  }
+}
+function checkVerticalCapture(){
+  for (let i = 1; i < board.length - 1; i++){
+    if (i > 11 && i < 109){
+      let up = Math.sign(board[i - 11].occupied)
+      let down = Math.sign(board[i + 11].occupied)
+      if (up === 0 || down === 0 || Math.sign(board[i].occupied) === 0){
         continue
       }
-      if (Math.sign(board[i - 1].occupied) !== Math.sign(board[i].occupied) && Math.sign(board[i + 1].occupied) !== Math.sign(board[i].occupied)){
-      board[i].occupied = 0
-      console.log("capture");
-      render()
+      if (up !== Math.sign(board[i].occupied) && down !== Math.sign(board[i].occupied)){
+        board[i].occupied = 0
+        render()
       }
     }
   }
+}
