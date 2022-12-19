@@ -297,28 +297,20 @@ function moveInnerPiece(evt, hoverTarget){
   //! ----------------------------Check for capture---------------------------------------
 function checkLeftCapture(){
   //player one which here is 1
+  if (secondClickId === 1){
+    return
+  }
+  let left = board[secondClickId - 1];
+  let leftX2 = board[secondClickId - 2]
+  if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
+    return
+  }
   if (turn === -1){
-    let left = board[secondClickId - 1];
-    if (left.boardIdx === 0){
-      return
-    }
-    let leftX2 = board[secondClickId - 2]
-    if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (leftX2.occupied === 1 && left.occupied === -1){
       left.occupied = null
     }
   }
   if (turn === 1){
-    let left = board[secondClickId - 1];
-    if (left.boardIdx === 0){
-      return
-    }
-    let leftX2 = board[secondClickId - 2]
-    if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (leftX2.occupied === -1 && left.occupied === 1){
         left.occupied = null
       }
