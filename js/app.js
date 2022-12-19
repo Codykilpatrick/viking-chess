@@ -68,6 +68,7 @@ function handleClick(evt){
     checkLeftCapture()
     checkRightCapture()
     checkUpCapture()
+    checkDownCapture()
     checkForDarkWinner()
     updateMessage()
   }
@@ -384,6 +385,35 @@ function checkUpCapture(){
   render()
 }
 
+function checkDownCapture(){
+  if (turn === -1){
+    if (board[secondClickId].boardIdx > 97){
+      return
+    }
+    let down = board[secondClickId + 11]
+    let downX2 = board[secondClickId + 22]
+    if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx)){
+      return
+    }
+    if (downX2.occupied === 1 && down.occupied === -1){
+      down.occupied = null
+    }
+  }
+  if (turn === 1){
+    if (board[secondClickId].boardIdx > 97){
+      return
+    }
+    let down = board[secondClickId + 11]
+    let downX2 = board[secondClickId + 22]
+    if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx)){
+      return
+    }
+    if (downX2.occupied === -1 && down.occupied === 1){
+      down.occupied = null
+    }
+  }
+  render()
+}
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
   refugeSquares.forEach(function (square){
