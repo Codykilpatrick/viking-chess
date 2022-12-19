@@ -356,6 +356,9 @@ function checkRightCapture(){
 
 function checkUpCapture(){
   if (turn === -1){
+    if (board[secondClickId].boardIdx < 22){
+      return
+    }
     let up = board[secondClickId - 11]
     let upX2 = board[secondClickId - 22]
     if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
@@ -366,6 +369,9 @@ function checkUpCapture(){
     }
   }
   if (turn === 1){
+    if (board[secondClickId].boardIdx < 22){
+      return
+    }
     let up = board[secondClickId - 11]
     let upX2 = board[secondClickId - 22]
     if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
