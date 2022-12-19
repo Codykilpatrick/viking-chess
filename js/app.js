@@ -180,7 +180,6 @@ function updateMessage() {
   }
 }
 
-
 //! ------------------Hover functionality---------------------
 function possibleMoves(evt) {
   squareEls.forEach(function (el) {
@@ -294,46 +293,38 @@ function moveInnerPiece(evt, hoverTarget){
 
   //! ----------------------------Check for capture---------------------------------------
 function checkHorizontalCapture(){
-  for (let i = 1; i < board.length - 1; i++){
-    //Left and right capture check
-    let left = Math.sign(board[i - 1].occupied)
-    let right = Math.sign(board[i + 1].occupied)
-    let center = Math.sign(board[i].occupied)
-
-    if (rightEdgeIndex.includes(board[i].boardIdx)){
-      continue
+  //player one which here is 1
+  if (turn === -1){
+    console.log((board[secondClickId].occupied));
+    let left = board[secondClickId - 1];
+    let right = board[secondClickId + 1]
+    let leftX2 = board[secondClickId - 2]
+    let rightX2 = board[secondClickId +2];
+    if (leftX2.occupied === 1 && left.occupied === -1){
+      left.occupied = null
     }
-    if (leftEdgeIndex.includes(board[i].boardIdx)){
-      continue
-    }
-    if (left === 0 ||right === 0 || center === 0){
-      continue
-    }
-    if (left !== Math.sign(board[i].occupied) && right !== Math.sign(board[i].occupied)){
-      if (board[i].occupied !== turn){
-        break
-      } else {
-      board[i].occupied = null
-      }
-      render()
+    if (rightX2.occupied === 1 && right.occupied === -1){
+      right.occupied = null
     }
   }
+  if (turn === 1){
+    console.log((board[secondClickId].occupied));
+    let left = board[secondClickId - 1];
+    let right = board[secondClickId + 1]
+    let leftX2 = board[secondClickId - 2]
+    let rightX2 = board[secondClickId +2];
+    if (leftX2.occupied === -1 && left.occupied === 1){
+      left.occupied = null
+    }
+    if (rightX2.occupied === -1 && right.occupied === 1){
+      right.occupied = null
+    }
+  }
+  render()
 }
 function checkVerticalCapture(){
-  for (let i = 1; i < board.length - 1; i++){
-    if (i > 11 && i < 109){
-      let up = Math.sign(board[i - 11].occupied)
-      let down = Math.sign(board[i + 11].occupied)
-      if (up === 0 || down === 0 || Math.sign(board[i].occupied) === 0){
-        continue
-      }
-      if (up !== Math.sign(board[i].occupied) && down !== Math.sign(board[i].occupied)){
-        board[i].occupied = 0
-        render()
-      }
-    }
+
   }
-}
 
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
