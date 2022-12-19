@@ -7,6 +7,7 @@ const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 98, 109]
 const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 const topEdgeIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 const bottomEdgeIndex = [111, 112, 113, 114, 115, 116, 117, 118, 119]
+const refugeSquares = [0, 10, 110, 120]
 
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
@@ -66,6 +67,7 @@ function handleClick(evt){
 
     checkHorizontalCapture()
     checkVerticalCapture()
+    checkForDarkWinner()
     updateMessage()
   }
 }
@@ -323,4 +325,14 @@ function checkVerticalCapture(){
       }
     }
   }
+}
+
+//! -----------------------Check for winner-------------------
+function checkForDarkWinner(){
+  refugeSquares.forEach(function (square){
+    if (board[square].occupied){
+      winner = true
+    };
+    console.log(winner);
+  })
 }
