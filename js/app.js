@@ -70,7 +70,7 @@ function handleClick(evt){
   }
 }
 function clickOne(firstClickId){
-  board[firstClickId].occupied = 0
+  board[firstClickId].occupied = null
   // render()
 }
 
@@ -152,7 +152,7 @@ function checkValidMoves(secondClickId, firstClickId){
 function updateBoard(){
   board.forEach(function(value, idx) {
     value = squareEls[idx]
-    if (board[idx].occupied === 0){
+    if (board[idx].occupied === null){
       value.innerText = ""
     }
     else if (board[idx].occupied === 1){
@@ -173,6 +173,7 @@ function updateMessage() {
   } else {
     messageEl.innerText = "Its player two's turn!"
   }
+  console.log(board);
 }
 
 
@@ -305,7 +306,7 @@ function checkHorizontalCapture(){
       continue
     }
     if (left !== Math.sign(board[i].occupied) && right !== Math.sign(board[i].occupied)){
-      board[i].occupied = 0
+      board[i].occupied = null
       render()
     }
   }
