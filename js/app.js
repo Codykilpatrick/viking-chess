@@ -379,11 +379,12 @@ function checkUpCapture(){
 }
 
 function checkDownCapture(){
-  if (board[secondClickId].boardIdx > 97){
+  if (board[secondClickId].boardIdx > 98){
     return
   }
   let down = board[secondClickId + 11]
   let downX2 = board[secondClickId + 22]
+  console.log(downX2);
   if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx)){
     return
   }
@@ -391,9 +392,15 @@ function checkDownCapture(){
     if (downX2.occupied === 1 && down.occupied === -1){
       down.occupied = null
     }
+    if (downX2.isRefuge === true && down.occupied === 1){
+      down.occupied = null
+    }
   }
   if (turn === 1){
     if (downX2.occupied === -1 && down.occupied === 1){
+      down.occupied = null
+    }
+    if (downX2.isRefuge === true && down.occupied === -1){
       down.occupied = null
     }
   }
