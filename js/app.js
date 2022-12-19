@@ -339,6 +339,9 @@ function checkRightCapture(){
     if (rightX2.occupied === 1 && right.occupied === -1){
       right.occupied = null
     }
+    if (rightX2.isRefuge === true && right.occupied === -1){
+      right.occupied = null
+    }
   }
   if (turn === 1){
     let right = board[secondClickId + 1];
@@ -350,6 +353,9 @@ function checkRightCapture(){
       return
     }
     if (rightX2.occupied === -1 && right.occupied === 1){
+        right.occupied = null
+      }
+      if (rightX2.isRefuge === true && right.occupied === 1){
         right.occupied = null
       }
     }
@@ -365,8 +371,6 @@ function checkUpCapture(){
   if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
     return
   }
-  console.log(up, turn);
-  console.log(upX2, turn);
   if (turn === -1){
     if (upX2.occupied === 1 && up.occupied === -1){
       up.occupied = null
