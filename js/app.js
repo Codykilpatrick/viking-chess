@@ -88,8 +88,7 @@ function placePiece(firstClick, secondClickId, firstClickId){
 function checkValidMoves(secondClickId, firstClickId){
   secondClickId = +secondClickId
   //checks if space is occupied
-  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2){
-    console.log("Invalid move!");
+  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2 || board[secondClickId].isThrone === true){
     invalidEl.innerText = "Invalid move!"
     return false
   } 
@@ -173,7 +172,6 @@ function updateMessage() {
   } else {
     messageEl.innerText = "Its player two's turn!"
   }
-  console.log(board);
 }
 
 
