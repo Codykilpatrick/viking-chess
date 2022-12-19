@@ -309,7 +309,7 @@ function checkLeftCapture(){
     if (leftX2.occupied === 1 && left.occupied === -1){
       left.occupied = null
     }
-    if ((leftX2.occupied === null && leftX2.isThrone)  || (leftX2.isRefuge === true && left.occupied === -1)){
+    if ((leftX2.occupied === null && leftX2.isThrone) || (leftX2.isRefuge === true && left.occupied === -1)){
       left.occupied = null
     }
   }
@@ -317,7 +317,7 @@ function checkLeftCapture(){
     if (leftX2.occupied === -1 && left.occupied === 1){
         left.occupied = null
       }
-    if ((leftX2.occupied === null && leftX2.isThrone)  || (leftX2.isRefuge === true && left.occupied === 1)){
+    if ((leftX2.occupied === null && leftX2.isThrone) || (leftX2.isRefuge === true && left.occupied === 1)){
       left.occupied = null
     }
     }
@@ -337,7 +337,7 @@ function checkRightCapture(){
     if (rightX2.occupied === 1 && right.occupied === -1){
       right.occupied = null
     }
-    if (rightX2.isRefuge === true && right.occupied === -1){
+    if ((rightX2.occupied === null && rightX2.isThrone) || (rightX2.isRefuge === true && right.occupied === -1)){
       right.occupied = null
     }
   }
@@ -345,7 +345,7 @@ function checkRightCapture(){
     if (rightX2.occupied === -1 && right.occupied === 1){
       right.occupied = null
     }
-    if (rightX2.isRefuge === true && right.occupied === 1){
+    if ((rightX2.occupied === null && rightX2.isThrone) || (rightX2.isRefuge === true && right.occupied === 1)){
       right.occupied = null
     }
     }
