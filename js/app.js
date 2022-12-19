@@ -7,7 +7,7 @@ const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 98, 109]
 const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
 const topEdgeIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 const bottomEdgeIndex = [111, 112, 113, 114, 115, 116, 117, 118, 119]
-const refugeSquares = [1, 9, 11, 21, 99, 109, 111, 120]
+const refugeSquares = [0, 10, 110, 120]
 
 /*-------------------------------- Variables -----------------------------*/
 let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
@@ -138,7 +138,11 @@ function checkValidMoves(secondClickId){
     }
     validMoves.push(bottomSide)
   }
-
+  if (firstClick === -2){
+    refugeSquares.forEach(function (sq){
+      validMoves.push(sq)
+    })
+  }
   if (validMoves.includes(secondClickId)){
     return true
   } else {
