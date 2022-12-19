@@ -67,6 +67,7 @@ function handleClick(evt){
 
     checkLeftCapture()
     checkRightCapture()
+    checkUpCapture()
     checkForDarkWinner()
     updateMessage()
   }
@@ -296,6 +297,9 @@ function checkLeftCapture(){
   //player one which here is 1
   if (turn === -1){
     let left = board[secondClickId - 1];
+    if (left.boardIdx === 0){
+      return
+    }
     let leftX2 = board[secondClickId - 2]
     if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
       return
@@ -306,6 +310,9 @@ function checkLeftCapture(){
   }
   if (turn === 1){
     let left = board[secondClickId - 1];
+    if (left.boardIdx === 0){
+      return
+    }
     let leftX2 = board[secondClickId - 2]
     if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
       return
@@ -317,10 +324,12 @@ function checkLeftCapture(){
   render()
 }
 
-
 function checkRightCapture(){
   if (turn === -1){
     let right = board[secondClickId + 1];
+    if (right.boardIdx === 120){
+      return
+    }
     let rightX2 = board[secondClickId + 2]
     if (rightEdgeIndex.includes(right.boardIdx)|| rightEdgeIndex.includes(board[secondClickId].boardIdx)){
       return
@@ -331,6 +340,9 @@ function checkRightCapture(){
   }
   if (turn === 1){
     let right = board[secondClickId + 1];
+    if (right.boardIdx === 120){
+      return
+    }
     let rightX2 = board[secondClickId + 2]
     if (rightEdgeIndex.includes(right.boardIdx) || rightEdgeIndex.includes(board[secondClickId].boardIdx)){
       return
@@ -341,6 +353,30 @@ function checkRightCapture(){
     }
   render()
   }
+
+function checkUpCapture(){
+  if (turn === -1){
+    let up = board[secondClickId - 11]
+    let upX2 = board[secondClickId - 22]
+    if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
+      return
+    }
+    if (upX2.occupied === 1 && up.occupied === -1){
+      up.occupied = null
+    }
+  }
+  if (turn === 1){
+    let up = board[secondClickId - 11]
+    let upX2 = board[secondClickId - 22]
+    if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
+      return
+    }
+    if (upX2.occupied === -1 && up.occupied === 1){
+      up.occupied = null
+    }
+  }
+  render()
+}
 
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
