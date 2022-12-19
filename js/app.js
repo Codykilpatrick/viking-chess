@@ -365,7 +365,7 @@ function checkUpCapture(){
     if (upX2.occupied === 1 && up.occupied === -1){
       up.occupied = null
     }
-    if (upX2.isRefuge === true && up.occupied === -1){
+    if ((upX2.occupied === null && upX2.isThrone) || (upX2.isRefuge === true && up.occupied === -1)){
       up.occupied = null
     }
   }
@@ -373,7 +373,7 @@ function checkUpCapture(){
     if (upX2.occupied === -1 && up.occupied === 1){
       up.occupied = null
     }
-    if (upX2.isRefuge === true && up.occupied === 1){
+    if ((upX2.occupied === null && upX2.isThrone) || (upX2.isRefuge === true && up.occupied === 1)){
       up.occupied = null
     }
   }
@@ -393,7 +393,7 @@ function checkDownCapture(){
     if (downX2.occupied === 1 && down.occupied === -1){
       down.occupied = null
     }
-    if (downX2.isRefuge === true && down.occupied === -1){
+    if ((downX2.occupied === null && downX2.isThrone) || (downX2.isRefuge === true && down.occupied === -1)){
       down.occupied = null
     }
   }
@@ -401,7 +401,7 @@ function checkDownCapture(){
     if (downX2.occupied === -1 && down.occupied === 1){
       down.occupied = null
     }
-    if (downX2.isRefuge === true && down.occupied === 1){
+    if ((downX2.occupied === null && downX2.isThrone) || (downX2.isRefuge === true && down.occupied === 1)){
       down.occupied = null
     }
   }
