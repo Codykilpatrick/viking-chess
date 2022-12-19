@@ -309,11 +309,17 @@ function checkLeftCapture(){
     if (leftX2.occupied === 1 && left.occupied === -1){
       left.occupied = null
     }
+    if (leftX2.isRefuge === true && left.occupied === -1){
+      left.occupied = null
+    }
   }
   if (turn === 1){
     if (leftX2.occupied === -1 && left.occupied === 1){
         left.occupied = null
       }
+    if (leftX2.isRefuge === true && left.occupied === 1){
+      left.occupied = null
+    }
     }
   render()
 }
@@ -387,7 +393,7 @@ function checkDownCapture(){
     if (downX2.occupied === 1 && down.occupied === -1){
       down.occupied = null
     }
-    if (downX2.isRefuge === true && down.occupied === 1){
+    if (downX2.isRefuge === true && down.occupied === -1){
       down.occupied = null
     }
   }
@@ -395,7 +401,7 @@ function checkDownCapture(){
     if (downX2.occupied === -1 && down.occupied === 1){
       down.occupied = null
     }
-    if (downX2.isRefuge === true && down.occupied === -1){
+    if (downX2.isRefuge === true && down.occupied === 1){
       down.occupied = null
     }
   }
