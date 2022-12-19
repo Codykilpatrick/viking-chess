@@ -386,28 +386,17 @@ function checkUpCapture(){
 }
 
 function checkDownCapture(){
+  let down = board[secondClickId + 11]
+  let downX2 = board[secondClickId + 22]
+  if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx) || board[secondClickId].boardIdx > 97){
+    return
+  }
   if (turn === -1){
-    if (board[secondClickId].boardIdx > 97){
-      return
-    }
-    let down = board[secondClickId + 11]
-    let downX2 = board[secondClickId + 22]
-    if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (downX2.occupied === 1 && down.occupied === -1){
       down.occupied = null
     }
   }
   if (turn === 1){
-    if (board[secondClickId].boardIdx > 97){
-      return
-    }
-    let down = board[secondClickId + 11]
-    let downX2 = board[secondClickId + 22]
-    if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (downX2.occupied === -1 && down.occupied === 1){
       down.occupied = null
     }
