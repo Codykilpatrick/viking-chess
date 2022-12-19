@@ -327,15 +327,15 @@ function checkLeftCapture(){
 }
 
 function checkRightCapture(){
+  if (secondClickId === 119){
+    return
+  }
+  let right = board[secondClickId + 1];
+  let rightX2 = board[secondClickId + 2]
+  if (rightEdgeIndex.includes(right.boardIdx)|| rightEdgeIndex.includes(board[secondClickId].boardIdx)){
+    return
+  }
   if (turn === -1){
-    let right = board[secondClickId + 1];
-    if (right.boardIdx === 120){
-      return
-    }
-    let rightX2 = board[secondClickId + 2]
-    if (rightEdgeIndex.includes(right.boardIdx)|| rightEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (rightX2.occupied === 1 && right.occupied === -1){
       right.occupied = null
     }
@@ -344,20 +344,12 @@ function checkRightCapture(){
     }
   }
   if (turn === 1){
-    let right = board[secondClickId + 1];
-    if (right.boardIdx === 120){
-      return
-    }
-    let rightX2 = board[secondClickId + 2]
-    if (rightEdgeIndex.includes(right.boardIdx) || rightEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (rightX2.occupied === -1 && right.occupied === 1){
-        right.occupied = null
-      }
-      if (rightX2.isRefuge === true && right.occupied === 1){
-        right.occupied = null
-      }
+      right.occupied = null
+    }
+    if (rightX2.isRefuge === true && right.occupied === 1){
+      right.occupied = null
+    }
     }
   render()
   }
