@@ -310,7 +310,11 @@ function checkHorizontalCapture(){
       continue
     }
     if (left !== Math.sign(board[i].occupied) && right !== Math.sign(board[i].occupied)){
+      if (board[i].occupied !== turn){
+        break
+      } else {
       board[i].occupied = null
+      }
       render()
     }
   }
