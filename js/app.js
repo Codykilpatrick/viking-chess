@@ -66,6 +66,7 @@ function handleClick(evt){
     clickCount = 0
 
     checkLeftCapture()
+    checkRightCapture()
     checkForDarkWinner()
     updateMessage()
   }
@@ -296,33 +297,49 @@ function checkLeftCapture(){
   if (turn === -1){
     let left = board[secondClickId - 1];
     let leftX2 = board[secondClickId - 2]
-    if (leftEdgeIndex.includes(left.boardIdx)){
+    if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
       return
     }
-    else if (leftX2.occupied === 1 && left.occupied === -1){
+    if (leftX2.occupied === 1 && left.occupied === -1){
       left.occupied = null
     }
   }
   if (turn === 1){
     let left = board[secondClickId - 1];
     let leftX2 = board[secondClickId - 2]
-    if (leftEdgeIndex.includes(left.boardIdx)){
+    if (leftEdgeIndex.includes(left.boardIdx) || leftEdgeIndex.includes(board[secondClickId].boardIdx)){
       return
     }
-    else if (leftX2.occupied === -1 && left.occupied === 1){
+    if (leftX2.occupied === -1 && left.occupied === 1){
         left.occupied = null
       }
     }
   render()
 }
 
-//Right functuion stuff
-// if (!rightEdgeIndex.includes(right.boardIdx)){
-//   if (rightX2.occupied === 1 && right.occupied === -1){
-//     right.occupied = null
-//   }
-function checkVerticalCapture(){
 
+function checkRightCapture(){
+  if (turn === -1){
+    let right = board[secondClickId + 1];
+    let rightX2 = board[secondClickId + 2]
+    if (rightEdgeIndex.includes(right.boardIdx)|| rightEdgeIndex.includes(board[secondClickId].boardIdx)){
+      return
+    }
+    if (rightX2.occupied === 1 && right.occupied === -1){
+      right.occupied = null
+    }
+  }
+  if (turn === 1){
+    let right = board[secondClickId + 1];
+    let rightX2 = board[secondClickId + 2]
+    if (rightEdgeIndex.includes(right.boardIdx) || rightEdgeIndex.includes(board[secondClickId].boardIdx)){
+      return
+    }
+    if (rightX2.occupied === -1 && right.occupied === 1){
+        right.occupied = null
+      }
+    }
+  render()
   }
 
 //! -----------------------Check for winner-------------------
