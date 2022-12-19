@@ -69,6 +69,7 @@ function handleClick(evt){
     checkRightCapture()
     checkUpCapture()
     checkDownCapture()
+    checkForKingCapture()
     checkForDarkWinner()
     updateMessage()
   }
@@ -398,6 +399,7 @@ function checkDownCapture(){
   }
   render()
 }
+
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
   refugeSquares.forEach(function (square){
@@ -405,4 +407,13 @@ function checkForDarkWinner(){
       winner = true
     }
   })
+}
+function checkForKingCapture(){
+  for (let i = 0; i < board.length; i++){
+    if (board[i].occupied === -2){
+      if (board[i - 1].occupied === 1 && board[i + 1].occupied === 1 && board[i - 11].occupied === 1 && board[i + 11].occupied === 1){
+        winner = true
+      }
+    }
+  }
 }
