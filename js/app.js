@@ -65,8 +65,7 @@ function handleClick(evt){
     //reset click count, update the message, change the turn
     clickCount = 0
 
-    checkHorizontalCapture()
-    checkVerticalCapture()
+    checkLeftCapture()
     checkForDarkWinner()
     updateMessage()
   }
@@ -292,36 +291,36 @@ function moveInnerPiece(evt, hoverTarget){
 
 
   //! ----------------------------Check for capture---------------------------------------
-function checkHorizontalCapture(){
+function checkLeftCapture(){
   //player one which here is 1
   if (turn === -1){
-    console.log((board[secondClickId].occupied));
     let left = board[secondClickId - 1];
-    let right = board[secondClickId + 1]
     let leftX2 = board[secondClickId - 2]
-    let rightX2 = board[secondClickId +2];
-    if (leftX2.occupied === 1 && left.occupied === -1){
-      left.occupied = null
+    if (leftEdgeIndex.includes(left.boardIdx)){
+      return
     }
-    if (rightX2.occupied === 1 && right.occupied === -1){
-      right.occupied = null
+    else if (leftX2.occupied === 1 && left.occupied === -1){
+      left.occupied = null
     }
   }
   if (turn === 1){
-    console.log((board[secondClickId].occupied));
     let left = board[secondClickId - 1];
-    let right = board[secondClickId + 1]
     let leftX2 = board[secondClickId - 2]
-    let rightX2 = board[secondClickId +2];
-    if (leftX2.occupied === -1 && left.occupied === 1){
-      left.occupied = null
+    if (leftEdgeIndex.includes(left.boardIdx)){
+      return
     }
-    if (rightX2.occupied === -1 && right.occupied === 1){
-      right.occupied = null
+    else if (leftX2.occupied === -1 && left.occupied === 1){
+        left.occupied = null
+      }
     }
-  }
   render()
 }
+
+//Right functuion stuff
+// if (!rightEdgeIndex.includes(right.boardIdx)){
+//   if (rightX2.occupied === 1 && right.occupied === -1){
+//     right.occupied = null
+//   }
 function checkVerticalCapture(){
 
   }
