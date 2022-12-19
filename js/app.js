@@ -356,28 +356,20 @@ function checkRightCapture(){
   }
 
 function checkUpCapture(){
+  if (board[secondClickId].boardIdx < 22){
+    return
+  }
+  let up = board[secondClickId - 11]
+  let upX2 = board[secondClickId - 22]
+  if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
+    return
+  }
   if (turn === -1){
-    if (board[secondClickId].boardIdx < 22){
-      return
-    }
-    let up = board[secondClickId - 11]
-    let upX2 = board[secondClickId - 22]
-    if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (upX2.occupied === 1 && up.occupied === -1){
       up.occupied = null
     }
   }
   if (turn === 1){
-    if (board[secondClickId].boardIdx < 22){
-      return
-    }
-    let up = board[secondClickId - 11]
-    let upX2 = board[secondClickId - 22]
-    if (topEdgeIndex.includes(up.boardIdx) || topEdgeIndex.includes(board[secondClickId].boardIdx)){
-      return
-    }
     if (upX2.occupied === -1 && up.occupied === 1){
       up.occupied = null
     }
@@ -386,9 +378,12 @@ function checkUpCapture(){
 }
 
 function checkDownCapture(){
+  if (board[secondClickId].boardIdx > 97){
+    return
+  }
   let down = board[secondClickId + 11]
   let downX2 = board[secondClickId + 22]
-  if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx) || board[secondClickId].boardIdx > 97){
+  if (bottomEdgeIndex.includes(down.boardIdx) || bottomEdgeIndex.includes(board[secondClickId].boardIdx)){
     return
   }
   if (turn === -1){
