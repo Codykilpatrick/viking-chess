@@ -210,8 +210,9 @@ function handleClick(evt){
     checkUpCapture()
     checkDownCapture()
     //Shield captures
-    topSideshieldCapture()
-    bottomSideshieldCapture()
+    topSideShieldCapture()
+    bottomSideShieldCapture()
+    rightSideShieldCapture()
     //Win Conditions
     checkForKingCapture()
     checkForDarkWinner()
@@ -577,7 +578,7 @@ function checkDownCapture(){
 
 //* ------------------------Shield capture function ----------
 //Top side shield capture
-function topSideshieldCapture(){
+function topSideShieldCapture(){
   for (let i = 5; i <= topEdgeIndex.length; i++){
     let center = board[i]
     let left = board[i - 1];
@@ -616,8 +617,8 @@ function topSideshieldCapture(){
   }
   render()
 }
-//Bottom side
-function bottomSideshieldCapture(){
+//Bottom side shield capture
+function bottomSideShieldCapture(){
   for (let i = 115; i <= 119; i++){
     let center = board[i]
     let left = board[i - 1];
@@ -657,6 +658,32 @@ function bottomSideshieldCapture(){
   render()
 }
 
+//Right side shield capture
+
+function rightSideShieldCapture(){
+  for (let i = 21; i < 76; i += 11){
+    let center = board[i]
+    let below = board[i + 11]
+    let belowLeft = board[i + 10]
+    let belowX2 = board[i + 22]
+    let belowX2Left = board[i + 21]
+    let belowX3 = board[i + 33]
+    let belowX3Left = board[i + 32]
+    let belowX4 = board[i + 44]
+    //if player one captures 2 pieces
+    if (center.occupied === 1 && below.occupied === -1 && belowX2.occupied === -1 && belowLeft.occupied === 1 && belowX2Left.occupied === 1){
+      below.occupied = null
+      belowX2.occupied = null
+    }
+    //if player one captures 3 pieces
+    //if player two captures 2 pieces
+    if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowLeft.occupied === -1 && belowX2Left.occupied === -1){
+      below.occupied = null
+      belowX2.occupied = null
+    }
+    //if player two captures 3 pieces
+  }
+}
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
   refugeSquares.forEach(function (square){
