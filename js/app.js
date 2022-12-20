@@ -177,6 +177,9 @@ function init(evt){
 }
 
 function handleClick(evt){
+  if (winner === true){
+    return
+  }
   //Square index
   sq = evt.target
   if (Math.sign(board[sq.id.slice(2,5)].occupied) !== turn && clickCount === 0){
