@@ -73,7 +73,7 @@ function handleClick(evt){
     checkDownCapture()
     checkForKingCapture()
     checkForDarkWinner()
-    whitePieceLocations()
+    whitePieceSurround()
     updateMessage()
   }
 }
@@ -309,6 +309,9 @@ function checkLeftCapture(){
   }
   //player one which here is 1
   if (turn === -1){
+    if (left.occupied === -2 || leftX2.occupied === -2){
+      return
+    }
     if (leftX2.occupied === 1 && left.occupied === -1){
       left.occupied = null
     }
@@ -337,6 +340,9 @@ function checkRightCapture(){
     return
   }
   if (turn === -1){
+    if (right.occupied === -2 || rightX2.occupied === -2){
+      return
+    }
     if (rightX2.occupied === 1 && right.occupied === -1){
       right.occupied = null
     }
@@ -365,6 +371,9 @@ function checkUpCapture(){
     return
   }
   if (turn === -1){
+    if (up.occupied === -2 || upX2.occupied === -2){
+      return
+    }
     if (upX2.occupied === 1 && up.occupied === -1){
       up.occupied = null
     }
@@ -393,6 +402,9 @@ function checkDownCapture(){
     return
   }
   if (turn === -1){
+    if (down.occupied === -2 || downX2.occupied === -2){
+      return
+    }
     if (downX2.occupied === 1 && down.occupied === -1){
       down.occupied = null
     }
@@ -449,7 +461,10 @@ function checkFullKingCapture(){
   for (let i = 0; i < board.length; i++){
     if (board[i].occupied === -2){
       //Case for a king that is surrounded on the four sides
-      if (board[i - 1].occupied === 1 && board[i + 1].occupied === 1 && board[i - 11].occupied === 1 && board[i + 11].occupied === 1){
+      if ((board[i - 1].isThrone === true || board[i - 1].occupied === 1)
+      && (board[i + 1].isThrone === true || board[i + 1].occupied === 1) 
+      && (board[i - 11].isThrone === true ||board[i - 11].occupied === 1)
+      && (board[i + 11].isThrone === true ||board[i + 11].occupied === 1)){
         winner = true
         return
       }
@@ -503,7 +518,7 @@ function leftSideKingCapture(){
 
 //! ------------------ White piece locations -------------
 
-function whitePieceLocations(){
+function whitePieceSurround(){
   for (let i = 0; i < board.length; i++){
     if (board[i].occupied === -1 || board[i].occupied === -2){
       whitePieces.push(board[i].boardIdx)
