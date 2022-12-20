@@ -14,6 +14,8 @@ let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
 let firstClick = ''
 let clickCount = 0 
 let validMoves = []
+let whitePieces = []
+let whiteTotalValidMoves = []
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -71,6 +73,7 @@ function handleClick(evt){
     checkDownCapture()
     checkForKingCapture()
     checkForDarkWinner()
+    whitePieceLocations()
     updateMessage()
   }
 }
@@ -416,6 +419,12 @@ function checkForDarkWinner(){
     }
   })
 }
+
+
+
+
+
+//! -----------------------King capture function---------------
 function checkForKingCapture(){
   let kingSquare
   for (let i = 0; i < board.length; i++){
@@ -489,5 +498,55 @@ function leftSideKingCapture(){
         return
       }
     }
+  }
+}
+
+//! ------------------ White piece locations -------------
+
+function whitePieceLocations(){
+  for (let i = 0; i < board.length; i++){
+    if (board[i].occupied === -1 || board[i].occupied === -2){
+      whitePieces.push(board[i].boardIdx)
+    }
+  }
+  whitePieces.forEach(function (square){
+    for (let i = 1; i < 11; i++){
+      let leftSide = Number(square) - i
+      if (board[leftSide].occupied || rightEdgeIndex.includes(leftSide) || board[leftSide].isRefuge){
+        break
+      }
+      whiteTotalValidMoves.push(leftSide)
+    }
+    //Right side checker
+    for (let i = 1; i < 11; i++){
+      let rightSide = Number(square) + i
+      if (board[rightSide].occupied || leftEdgeIndex.includes(rightSide) || board[rightSide].isRefuge){
+        break
+      }
+      whiteTotalValidMoves.push(rightSide)
+    }
+    //Top side checker
+    for (let i = 1; i < 11; i++){
+      let topSide = Number(square) - (i * 11)
+      if (topSide < 0 || board[topSide].occupied || bottomEdgeIndex.includes(topSide) || board[topSide].isRefuge){
+        break
+      }
+      whiteTotalValidMoves.push(topSide)
+    }
+    //bottom side checker
+    for (let i = 1; i < 11; i++){
+      let bottomSide = Number(square) + (i * 11)
+      if (bottomSide > 120 || board[bottomSide].occupied || topEdgeIndex.includes(bottomSide) || board[bottomSide].isRefuge){
+        break
+      }
+      whiteTotalValidMoves.push(bottomSide)
+    }
+  })
+  if (whiteTotalValidMoves.length === 0){
+    winner = true
+    console.log(winner);
+  } else {
+    whiteTotalValidMoves = []
+    whitePieces = []
   }
 }
