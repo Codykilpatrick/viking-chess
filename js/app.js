@@ -173,6 +173,7 @@ function init(evt){
   turn = 1
   winner = false
   render()
+  updateMessage()
 }
 
 function handleClick(evt){
