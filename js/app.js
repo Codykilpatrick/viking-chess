@@ -211,6 +211,7 @@ function handleClick(evt){
     checkDownCapture()
     //Shield captures
     topSideshieldCapture()
+    bottomSideshieldCapture()
     //Win Conditions
     checkForKingCapture()
     checkForDarkWinner()
@@ -575,7 +576,7 @@ function checkDownCapture(){
 }
 
 //* ------------------------Shield capture function ----------
-//Left side shield capture
+//Top side shield capture
 function topSideshieldCapture(){
   for (let i = 5; i <= topEdgeIndex.length; i++){
     let center = board[i]
@@ -608,6 +609,46 @@ function topSideshieldCapture(){
     //If player two captures 3 pieces
     if (leftX4.occupied === -1 && leftX3.occupied === 1 && leftX2.occupied === 1 && left.occupied === 1 && center.occupied === -1
       && leftX3Below.occupied === -1 && leftX2Below.occupied === -1 && leftBelow.occupied === -1){
+        left.occupied = null
+        leftX2.occupied = null
+        leftX3.occupied = null
+    }
+  }
+  render()
+}
+//Bottom side
+function bottomSideshieldCapture(){
+  for (let i = 115; i <= 119; i++){
+    let center = board[i]
+    let left = board[i - 1];
+    let leftAbove = board[i - 12]
+    let leftX2 = board[i - 2]
+    let leftX2Above = board[i - 13]
+    let leftX3 = board[i - 3]
+    let leftX3Above = board[i - 14]
+    let leftX4 = board[i - 4]
+    // if player one captures 2 pieces
+    if (leftX3.occupied === 1 && leftX2.occupied === -1 && left.occupied === -1 && center.occupied === 1
+      && leftX2Above.occupied === 1 && leftAbove.occupied === 1){
+        left.occupied = null
+        leftX2.occupied = null
+      }
+    //If player one captures 3 pieces
+    if (leftX4.occupied === 1 && leftX3.occupied === -1 && leftX2.occupied === -1 && left.occupied === -1 && center.occupied === 1
+      && leftX3Above.occupied === 1 && leftX2Above.occupied === 1 && leftAbove.occupied === 1){
+        left.occupied = null
+        leftX2.occupied = null
+        leftX3.occupied = null
+    }
+    //if player two captures 2 pieces
+    if (leftX3.occupied === -1 && leftX2.occupied === 1 && left.occupied === 1 && center.occupied === -1
+      && leftX2Above.occupied === -1 && leftAbove.occupied === -1){
+        left.occupied = null
+        leftX2.occupied = null
+      }
+    // If player two captures 3 pieces
+    if (leftX4.occupied === -1 && leftX3.occupied === 1 && leftX2.occupied === 1 && left.occupied === 1 && center.occupied === -1
+      && leftX3Above.occupied === -1 && leftX2Above.occupied === -1 && leftAbove.occupied === -1){
         left.occupied = null
         leftX2.occupied = null
         leftX3.occupied = null
