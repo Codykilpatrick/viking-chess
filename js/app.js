@@ -698,6 +698,7 @@ function rightSideShieldCapture(){
   }
   render()
 }
+//Left side shield capture
 function leftSideShieldCapture(){
   for (let i = 11; i < 67; i += 11){
     let center = board[i]
