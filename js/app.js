@@ -419,9 +419,37 @@ function checkForDarkWinner(){
 function checkForKingCapture(){
   for (let i = 0; i < board.length; i++){
     if (board[i].occupied === -2){
+      //Case for a king that is surrounded on the four sides
       if (board[i - 1].occupied === 1 && board[i + 1].occupied === 1 && board[i - 11].occupied === 1 && board[i + 11].occupied === 1){
+        console.log("King is surrounded on four sides");
         winner = true
       }
     }
   }
+}
+// Case for a king on the right edge
+function rightSideKingCapture(){
+  for (let i = 0; i < board.length; i++){
+    if (board[i].occupied === -2){
+      if (board[i - 1].occupied === 1 && board[i - 11].occupied === 1 && board[i + 11].occupied === 1 && rightEdgeIndex.includes(board[i].boardIdx)){
+        console.log("The king is trapped on the right side!");
+        winner = true
+      }
+    }
+  }
+}
+//Case for a king trapped on the top edge
+if (board[i - 1].occupied === 1 && board[i + 1].occupied === 1 && board[i + 11].occupied === 1 && topEdgeIndex.includes(board[i].boardIdx)){
+  console.log("The king is trapped on the top side!");
+  winner = true
+}
+//Case for a king trapped on the bottom edge
+if (board[i - 1].occupied === 1 && board[i - 1].occupied === 1 && board[i - 11].occupied === 1 && bottomEdgeIndex.includes(board[i].boardIdx)){
+  console.log("The king is trapped on the bottom side!");
+  winner = true
+}
+//Case for a king trapped on the left edge
+if (board[i + 1].occupied === 1 && board[i - 11].occupied === 1 && board[i + 11].occupied === 1 && leftEdgeIndex.includes(board[i].boardIdx)){
+  console.log("The king is trapped on the left side!");
+  winner = true
 }
