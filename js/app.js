@@ -661,7 +661,7 @@ function bottomSideShieldCapture(){
 //Right side shield capture
 
 function rightSideShieldCapture(){
-  for (let i = 21; i < 76; i += 11){
+  for (let i = 21; i < 77; i += 11){
     let center = board[i]
     let below = board[i + 11]
     let belowLeft = board[i + 10]
@@ -671,18 +671,34 @@ function rightSideShieldCapture(){
     let belowX3Left = board[i + 32]
     let belowX4 = board[i + 44]
     //if player one captures 2 pieces
-    if (center.occupied === 1 && below.occupied === -1 && belowX2.occupied === -1 && belowLeft.occupied === 1 && belowX2Left.occupied === 1){
+    if (center.occupied === 1 && below.occupied === -1 && belowX2.occupied === -1 && belowLeft.occupied === 1 
+      && belowX2Left.occupied === 1 && belowX3.occupied === 1){
       below.occupied = null
       belowX2.occupied = null
     }
     //if player one captures 3 pieces
+    if (center.occupied === 1 && below.occupied === -1 && belowX2.occupied === -1 && belowLeft.occupied === 1
+      && belowX2Left.occupied === 1 && belowX3.occupied === -1 && belowX3Left.occupied === 1 && belowX4.occupied === 1){
+      below.occupied = null
+      belowX2.occupied = null
+      belowX3.occupied = null
+    }
     //if player two captures 2 pieces
-    if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowLeft.occupied === -1 && belowX2Left.occupied === -1){
+    if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowLeft.occupied === -1 
+      && belowX2Left.occupied === -1 && belowX3.occupied === -1){
       below.occupied = null
       belowX2.occupied = null
     }
     //if player two captures 3 pieces
+    if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowLeft.occupied === -1
+      && belowX2Left.occupied === -1 && belowX3.occupied === 1 && belowX3Left.occupied === -1 && belowX4.occupied === -1){
+      below.occupied = null
+      belowX2.occupied = null
+      belowX3.occupied = null
+    }
+    //if 
   }
+  render()
 }
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
