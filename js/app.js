@@ -204,10 +204,14 @@ function handleClick(evt){
     //reset click count, update the message, change the turn
     clickCount = 0
 
+    //Normal captures
     checkLeftCapture()
     checkRightCapture()
     checkUpCapture()
     checkDownCapture()
+    //Shield captures
+    topSideshieldCapture()
+    //Win Conditions
     checkForKingCapture()
     checkForDarkWinner()
     whitePieceSurround()
@@ -570,6 +574,29 @@ function checkDownCapture(){
   render()
 }
 
+//* ------------------------Shield capture function ----------
+//Left side shield capture
+function topSideshieldCapture(){
+  if (secondClickId < 4 ){
+    return
+  }
+  let center = board[secondClickId]
+  let left = board[secondClickId - 1];
+  let leftBelow = board[secondClickId + 10]
+  let leftX2 = board[secondClickId - 2]
+  let leftX2Below = board[secondClickId + 9]
+  let leftX3 = board[secondClickId - 3]
+  let leftX3Below = board[secondClickId + 8]
+  let leftX4 = board[secondClickId - 4]
+  //player1 turn turn = -1
+  // if (turn === -1){
+  //   if (leftX3.occupied === 1 && leftX2.occupied === -1 && left.occupied === -1 && center.occupied === 1){
+  //     left.occupied = null
+  //     leftX2.occupied = null
+  //   }
+  // }
+}
+
 //! -----------------------Check for winner-------------------
 function checkForDarkWinner(){
   refugeSquares.forEach(function (square){
@@ -580,10 +607,7 @@ function checkForDarkWinner(){
 }
 
 
-
-
-
-//! -----------------------King capture function---------------
+//* -----------------------King capture function---------------
 function checkForKingCapture(){
   let kingSquare
   for (let i = 0; i < board.length; i++){
@@ -663,7 +687,7 @@ function leftSideKingCapture(){
   }
 }
 
-//! ------------------ White piece surrounded -------------
+//* ------------------ White piece surrounded -------------
 
 function whitePieceSurround(){
   for (let i = 0; i < board.length; i++){
