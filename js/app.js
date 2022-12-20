@@ -1,7 +1,6 @@
 
 /*-------------------------------- Constants -----------------------------*/
 
-import {board} from "./board.js"
 
 const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 98, 109]
 const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
@@ -10,7 +9,7 @@ const bottomEdgeIndex = [111, 112, 113, 114, 115, 116, 117, 118, 119]
 const refugeSquares = [0, 10, 110, 120]
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, tie, player, firstClickId, secondClickId, hoverTarget, sq
+let turn, tie, player, firstClickId, secondClickId, hoverTarget, sq, board
 let firstClick = ''
 let clickCount = 0 
 let validMoves = []
@@ -38,6 +37,139 @@ resetBtnEl.addEventListener('click', init)
 
 /*-------------------------------- Functions -----------------------------*/
 function init(evt){
+  board = 
+  [{boardIdx: 0, isRefuge: true, isEdge: true, isThrone: false, occupied: null},        
+  {boardIdx: 1, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 2, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 3, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 4, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 5, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 6, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 7, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 8, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 9, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 10, isRefuge: true, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 11, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  
+  {boardIdx: 12, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 13, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 14, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 15, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 16, isRefuge: false, isEdge: false, isThrone: false, occupied: 1},
+  {boardIdx: 17, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 18, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 19, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 20, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 21, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  
+  {boardIdx: 22, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 23, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 24, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 25, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 26, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 27, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 28, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 29, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 30, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 31, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 32, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  
+  {boardIdx: 33, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 34, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 35, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 36, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 37, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 38, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 39, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 40, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 41, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 42, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 43, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  
+  {boardIdx: 44, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 45, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 46, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 47, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 48, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 49, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 50, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 51, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 52, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 53, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 54, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  
+  {boardIdx: 55, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 56, isRefuge: false, isEdge: false, isThrone: false, occupied: 1},
+  {boardIdx: 57, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 58, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 59, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 60, isRefuge: false, isEdge: false, isThrone: true, occupied: -2},
+  {boardIdx: 61, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 62, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 63, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 64, isRefuge: false, isEdge: false, isThrone: false, occupied: 1},
+  {boardIdx: 65, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  
+  {boardIdx: 66, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 67, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 68, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 69, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 70, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 71, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 72, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 73, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 74, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 75, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 76, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  
+  {boardIdx: 77, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 78, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 79, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 80, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 81, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 82, isRefuge: false, isEdge: false, isThrone: false, occupied: -1},
+  {boardIdx: 83, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 84, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 85, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 86, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 87, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  
+  {boardIdx: 88, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 89, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 90, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 91, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 92, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 93, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 94, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 95, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 96, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 97, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 98, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  
+  {boardIdx: 99, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 100, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 101, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 102, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 103, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 104, isRefuge: false, isEdge: false, isThrone: false, occupied: 1},
+  {boardIdx: 105, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 106, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 107, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 108, isRefuge: false, isEdge: false, isThrone: false, occupied: null},
+  {boardIdx: 109, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  
+  {boardIdx: 110, isRefuge: true, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 111, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 112, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 113, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 114, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 115, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 116, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 117, isRefuge: false, isEdge: true, isThrone: false, occupied: 1},
+  {boardIdx: 118, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 119, isRefuge: false, isEdge: true, isThrone: false, occupied: null},
+  {boardIdx: 120, isRefuge: true, isEdge: true, isThrone: false, occupied: null},
+  ]
   turn = 1
   winner = false
   render()
