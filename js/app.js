@@ -10,12 +10,13 @@ const bottomEdgeIndex = [111, 112, 113, 114, 115, 116, 117, 118, 119]
 const refugeSquares = [0, 10, 110, 120]
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, winner, tie, player, firstClickId, secondClickId, hoverTarget, sq
+let turn, tie, player, firstClickId, secondClickId, hoverTarget, sq
 let firstClick = ''
 let clickCount = 0 
 let validMoves = []
 let whitePieces = []
 let whiteTotalValidMoves = []
+let winner = false
 
 /*------------------------ Cached Element References ---------------------*/
 
@@ -75,6 +76,7 @@ function handleClick(evt){
     checkForDarkWinner()
     whitePieceSurround()
     updateMessage()
+    checkWinner()
   }
 }
 function clickOne(firstClickId){
@@ -186,6 +188,15 @@ function updateMessage() {
   }
 }
 
+function checkWinner(){
+  if (winner === true){
+    if (turn === 1){
+    messageEl.innerText = `Player two wins!`
+    }else {
+      messageEl.innerText = `Player one wins!`
+    }
+  }
+}
 //! ------------------Hover functionality---------------------
 function possibleMoves(evt) {
   squareEls.forEach(function (el) {
@@ -516,7 +527,7 @@ function leftSideKingCapture(){
   }
 }
 
-//! ------------------ White piece locations -------------
+//! ------------------ White piece surrounded -------------
 
 function whitePieceSurround(){
   for (let i = 0; i < board.length; i++){
