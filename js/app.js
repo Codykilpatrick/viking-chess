@@ -213,6 +213,7 @@ function handleClick(evt){
     topSideShieldCapture()
     bottomSideShieldCapture()
     rightSideShieldCapture()
+    leftSideShieldCapture()
     //Win Conditions
     checkForKingCapture()
     checkForDarkWinner()
@@ -657,9 +658,7 @@ function bottomSideShieldCapture(){
   }
   render()
 }
-
 //Right side shield capture
-
 function rightSideShieldCapture(){
   for (let i = 21; i < 77; i += 11){
     let center = board[i]
@@ -696,7 +695,26 @@ function rightSideShieldCapture(){
       belowX2.occupied = null
       belowX3.occupied = null
     }
-    //if 
+  }
+  render()
+}
+function leftSideShieldCapture(){
+  for (let i = 11; i < 66; i += 11){
+    let center = board[i]
+    let below = board[i + 11]
+    let belowRight = board[i + 12]
+    let belowX2 = board[i + 22]
+    let belowX2Right = board[i + 23]
+    let belowX3 = board[i + 33]
+    let belowX3Right = board[i + 34]
+    let belowX4 = board[i + 44]
+    //If player one captures 2 pieces
+    
+    //If player one captures 3 pieces
+
+    //If player two captures 2 pieces
+
+    //If player two captures 3 pieces
   }
   render()
 }
