@@ -715,7 +715,12 @@ function leftSideShieldCapture(){
       belowX2.occupied = null
     }
     //If player one captures 3 pieces
-
+    if (center.occupied === 1 && below.occupied === -1 && belowX2.occupied === -1 && belowRight.occupied === 1
+      && belowX2Right.occupied === 1 && belowX3.occupied === -1 && belowX3Right.occupied === 1 && belowX4.occupied === 1){
+      below.occupied = null
+      belowX2.occupied = null
+      belowX3.occupied = null
+    }
     //If player two captures 2 pieces
     if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowRight.occupied === -1 
       && belowX2Right.occupied === -1 && belowX3.occupied === -1){
@@ -723,6 +728,12 @@ function leftSideShieldCapture(){
       belowX2.occupied = null
     }
     //If player two captures 3 pieces
+    if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowRight.occupied === -1
+      && belowX2Right.occupied === -1 && belowX3.occupied === 1 && belowX3Right.occupied === -1 && belowX4.occupied === -1){
+      below.occupied = null
+      belowX2.occupied = null
+      belowX3.occupied = null
+    }
   }
   render()
 }
