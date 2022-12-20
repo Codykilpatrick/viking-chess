@@ -577,24 +577,43 @@ function checkDownCapture(){
 //* ------------------------Shield capture function ----------
 //Left side shield capture
 function topSideshieldCapture(){
-  if (secondClickId < 4 ){
-    return
+  for (let i = 5; i <= topEdgeIndex.length; i++){
+    let center = board[i]
+    let left = board[i - 1];
+    let leftBelow = board[i + 10]
+    let leftX2 = board[i - 2]
+    let leftX2Below = board[i + 9]
+    let leftX3 = board[i - 3]
+    let leftX3Below = board[i + 8]
+    let leftX4 = board[i - 4]
+    //if player one captures two pieces
+    if (leftX3.occupied === 1 && leftX2.occupied === -1 && left.occupied === -1 && center.occupied === 1
+      && leftX2Below.occupied === 1 && leftBelow.occupied === 1){
+        left.occupied = null
+        leftX2.occupied = null
+      }
+    //If player one captures 3 pieces
+    if (leftX4.occupied === 1 && leftX3.occupied === -1 && leftX2.occupied === -1 && left.occupied === -1 && center.occupied === 1
+      && leftX3Below.occupied === 1 && leftX2Below.occupied === 1 && leftBelow.occupied === 1){
+        left.occupied = null
+        leftX2.occupied = null
+        leftX3.occupied = null
+    }
+    //if player two captures two pieces
+    if (leftX3.occupied === -1 && leftX2.occupied === 1 && left.occupied === 1 && center.occupied === -1
+      && leftX2Below.occupied === -1 && leftBelow.occupied === -1){
+        left.occupied = null
+        leftX2.occupied = null
+      }
+    //If player two captures 3 pieces
+    if (leftX4.occupied === -1 && leftX3.occupied === 1 && leftX2.occupied === 1 && left.occupied === 1 && center.occupied === -1
+      && leftX3Below.occupied === -1 && leftX2Below.occupied === -1 && leftBelow.occupied === -1){
+        left.occupied = null
+        leftX2.occupied = null
+        leftX3.occupied = null
+    }
   }
-  let center = board[secondClickId]
-  let left = board[secondClickId - 1];
-  let leftBelow = board[secondClickId + 10]
-  let leftX2 = board[secondClickId - 2]
-  let leftX2Below = board[secondClickId + 9]
-  let leftX3 = board[secondClickId - 3]
-  let leftX3Below = board[secondClickId + 8]
-  let leftX4 = board[secondClickId - 4]
-  //player1 turn turn = -1
-  // if (turn === -1){
-  //   if (leftX3.occupied === 1 && leftX2.occupied === -1 && left.occupied === -1 && center.occupied === 1){
-  //     left.occupied = null
-  //     leftX2.occupied = null
-  //   }
-  // }
+  render()
 }
 
 //! -----------------------Check for winner-------------------
