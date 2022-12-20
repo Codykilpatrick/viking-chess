@@ -699,7 +699,7 @@ function rightSideShieldCapture(){
   render()
 }
 function leftSideShieldCapture(){
-  for (let i = 11; i < 66; i += 11){
+  for (let i = 11; i < 67; i += 11){
     let center = board[i]
     let below = board[i + 11]
     let belowRight = board[i + 12]
@@ -709,11 +709,19 @@ function leftSideShieldCapture(){
     let belowX3Right = board[i + 34]
     let belowX4 = board[i + 44]
     //If player one captures 2 pieces
-    
+    if (center.occupied === 1 && below.occupied === -1 && belowX2.occupied === -1 && belowRight.occupied === 1 
+      && belowX2Right.occupied === 1 && belowX3.occupied === 1){
+      below.occupied = null
+      belowX2.occupied = null
+    }
     //If player one captures 3 pieces
 
     //If player two captures 2 pieces
-
+    if (center.occupied === -1 && below.occupied === 1 && belowX2.occupied === 1 && belowRight.occupied === -1 
+      && belowX2Right.occupied === -1 && belowX3.occupied === -1){
+      below.occupied = null
+      belowX2.occupied = null
+    }
     //If player two captures 3 pieces
   }
   render()
