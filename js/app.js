@@ -349,7 +349,7 @@ function possibleMoves(evt) {
 })
 hoverTarget = evt.target
   if (hoverTarget.innerText === "⚫" || hoverTarget.innerText === "⚪" || hoverTarget.innerText === "👑"){
-    hoverTarget.style.background ="grey"
+    hoverTarget.style.background ="rgba(0, 0, 0, 0.648)"
     let boardEdge = hoverTarget.id.slice(2,5)
     if (board[boardEdge].isEdge){
       moveEdgePiece(evt, hoverTarget)}
@@ -366,7 +366,7 @@ function moveEdgePiece(evt, hoverTarget){
       break
     }
     leftPiece = Number(leftPiece) - i
-    squareEls[leftPiece].style.background="grey"
+    squareEls[leftPiece].style.background="rgba(0, 0, 0, 0.648)"
     if (board[leftPiece].isRefuge === true || board[leftPiece - 1].occupied){
       break
     }
@@ -378,7 +378,7 @@ function moveEdgePiece(evt, hoverTarget){
       break
     }
     rightPiece = Number(rightPiece) + i
-    squareEls[rightPiece].style.background="grey"
+    squareEls[rightPiece].style.background="rgba(0, 0, 0, 0.648)"
     if (board[rightPiece].isRefuge === true || board[rightPiece + 1].occupied){
       break
     }
@@ -394,7 +394,7 @@ function moveEdgePiece(evt, hoverTarget){
       break
     }
     belowPiece = Number(belowPiece) + 11
-    squareEls[belowPiece].style.background="grey"
+    squareEls[belowPiece].style.background="rgba(0, 0, 0, 0.648)"
   }
 
     //Above possible moves
@@ -407,7 +407,7 @@ function moveEdgePiece(evt, hoverTarget){
         break
       }
       abovePiece = Number(abovePiece) - 11
-      squareEls[abovePiece].style.background="grey"
+      squareEls[abovePiece].style.background="rgba(0, 0, 0, 0.648)"
     }
 }
 
@@ -416,7 +416,7 @@ function moveInnerPiece(evt, hoverTarget){
   for (let i = 0; i < 10; i++){
     let leftPiece = +hoverTarget.id.slice(2,5)
     leftPiece = Number(leftPiece) - i
-    squareEls[leftPiece].style.background="grey"
+    squareEls[leftPiece].style.background="rgba(0, 0, 0, 0.648)"
     if (board[leftPiece].isEdge === true || board[leftPiece - 1].occupied){
       break
     }
@@ -425,7 +425,7 @@ function moveInnerPiece(evt, hoverTarget){
   for (let i = 0; i < 10; i++){
     let rightPiece = +hoverTarget.id.slice(2,5)
     rightPiece = Number(rightPiece) + i
-    squareEls[rightPiece].style.background="grey"
+    squareEls[rightPiece].style.background="rgba(0, 0, 0, 0.648)"
     if (board[rightPiece].isEdge === true || board[rightPiece + 1].occupied){
       break
     }
@@ -438,7 +438,7 @@ function moveInnerPiece(evt, hoverTarget){
       break
     }
     belowPiece = Number(belowPiece) + 11
-    squareEls[belowPiece].style.background="grey"
+    squareEls[belowPiece].style.background="rgba(0, 0, 0, 0.648)"
   }
 
     //Above possible moves
@@ -448,7 +448,7 @@ function moveInnerPiece(evt, hoverTarget){
         break
       }
       abovePiece = Number(abovePiece) - 11
-      squareEls[abovePiece].style.background="grey"
+      squareEls[abovePiece].style.background="rgba(0, 0, 0, 0.648)"
     }
   }
 
