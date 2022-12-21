@@ -1,6 +1,6 @@
 
 /*-------------------------------- Constants -----------------------------*/
-
+import * as sounds from './audio.js'
 
 const rightEdgeIndex = [21, 32, 43, 54, 65, 76, 87, 98, 109]
 const leftEdgeIndex = [11, 22, 33, 44, 55, 66, 77, 88, 99]
@@ -236,6 +236,7 @@ function placePiece(firstClick, secondClickId){
     board[firstClickId].occupied = firstClick
     render()
   }
+  sounds.playClickSound()
 }
 
 function checkValidMoves(secondClickId){
