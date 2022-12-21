@@ -346,12 +346,12 @@ function checkWinner(){
 function possibleMoves(evt) {
   squareEls.forEach(function (el) {
   el.style.background ="rgba(0,0,0,0)"
-  el.style.cursor = "pointer"
 })
 
 hoverTarget = evt.target
   if (hoverTarget.innerText === "⚫" || hoverTarget.innerText === "⚪" || hoverTarget.innerText === "👑"){
     hoverTarget.style.background ="rgba(0, 0, 0, 0.648)"
+    hoverTarget.style.cursor = "pointer"
     let boardEdge = hoverTarget.id.slice(2,5)
     if (board[boardEdge].isEdge){
       moveEdgePiece(evt, hoverTarget)}
