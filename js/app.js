@@ -313,7 +313,7 @@ function updateBoard(){
     }
     else if (board[idx].occupied === 1){
       value.innerText = "⚫"
-      value.innerHTML = "<img src=./images/blackpiece2.png></img>"
+      // value.innerHTML = "<img src=./images/blackpiece2.png></img>"
     }
     else if (board[idx].occupied === -1){
       value.innerText = "⚪"
@@ -321,7 +321,7 @@ function updateBoard(){
     }
     else if (board[idx].occupied === -2){
       value.innerText = "👑"
-      value.innerHTML = "<img src=./images/kingpiece.png></img>"
+      // value.innerHTML = "<img src=./images/kingpiece.png></img>"
     }
     })
 };
@@ -349,7 +349,8 @@ function possibleMoves(evt) {
   squareEls.forEach(function (el) {
   el.style.background ="tan"
 })
-  hoverTarget = evt.target
+hoverTarget = evt.target
+console.log(hoverTarget);
   if (hoverTarget.innerText === "⚫" || hoverTarget.innerText === "⚪" || hoverTarget.innerText === "👑"){
     hoverTarget.style.background ="grey"
     let boardEdge = hoverTarget.id.slice(2,5)
