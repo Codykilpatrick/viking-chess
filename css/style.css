@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(139, 135, 77, 0.674);
+background-color: rgba(139, 135, 77, 0.674);
 /* Use a system font, if none are available use an available sans-sarif   font */
 font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -12,6 +12,8 @@ text-align: center;
 color: white;
 font-size: x-large;
 align-items: center;
+background-image: url("https://img.freepik.com/free-vector/colorful-neon-light-trail-background_52683-4986.jpg?w=900&t=st=1671633614~exp=1671634214~hmac=779344986e87e82204993178071e91a53223e2c4df9fbf8c9a0695a4294222ef");
+background-size:cover;
 }
 
 section.board {
