@@ -44,9 +44,11 @@ section.board > * {
 
 .refuge {
   background-color: white !important;
+  /* border: solid white 2px !important; */
 }
 .throne {
   background-color: gold !important;
+  /* border: solid gold 2px !important; */
 }
 .btn {
   width: 170px;

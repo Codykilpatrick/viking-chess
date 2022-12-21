@@ -241,7 +241,7 @@ function placePiece(firstClick, secondClickId){
 function checkValidMoves(secondClickId){
   secondClickId = +secondClickId
   //checks if space is occupied
-  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2 || board[secondClickId].isThrone === true){
+  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2 || board[secondClickId].isThrone === true || board[secondClickId].isRefuge === true){
     invalidEl.innerText = "Invalid move!"
     return false
   } 
@@ -313,15 +313,13 @@ function updateBoard(){
     }
     else if (board[idx].occupied === 1){
       value.innerText = "⚫"
-      // value.innerHTML = "<img src=./images/blackpiece2.png></img>"
+
     }
     else if (board[idx].occupied === -1){
       value.innerText = "⚪"
-      // value.innerHTML = "<img src=./images/whitepiece2.png></img>"
     }
     else if (board[idx].occupied === -2){
       value.innerText = "👑"
-      // value.innerHTML = "<img src=./images/kingpiece.png></img>"
     }
     })
 };
@@ -350,7 +348,6 @@ function possibleMoves(evt) {
   el.style.background ="rgba(0,0,0,0)"
 })
 hoverTarget = evt.target
-console.log(hoverTarget);
   if (hoverTarget.innerText === "⚫" || hoverTarget.innerText === "⚪" || hoverTarget.innerText === "👑"){
     hoverTarget.style.background ="grey"
     let boardEdge = hoverTarget.id.slice(2,5)
