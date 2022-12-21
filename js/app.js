@@ -347,7 +347,7 @@ function possibleMoves(evt) {
   el.style.background ="tan"
 })
   hoverTarget = evt.target
-  if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
+  if (hoverTarget.innerText === "⚫" || hoverTarget.innerText === "⚪" || hoverTarget.innerText === "👑"){
     hoverTarget.style.background ="grey"
     let boardEdge = hoverTarget.id.slice(2,5)
     if (board[boardEdge].isEdge){
