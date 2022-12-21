@@ -313,12 +313,15 @@ function updateBoard(){
     }
     else if (board[idx].occupied === 1){
       value.innerText = "⚫"
+      value.innerHTML = "<img src=./images/blackpiece2.png></img>"
     }
     else if (board[idx].occupied === -1){
       value.innerText = "⚪"
+      // value.innerHTML = "<img src=./images/whitepiece2.png></img>"
     }
     else if (board[idx].occupied === -2){
       value.innerText = "👑"
+      value.innerHTML = "<img src=./images/kingpiece.png></img>"
     }
     })
 };

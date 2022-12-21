@@ -55,6 +55,11 @@ section.board > * {
   border-radius: 5px;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 #sq0 {
   border-top-left-radius: 20px;
 }
