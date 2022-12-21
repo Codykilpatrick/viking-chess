@@ -749,7 +749,6 @@ function leftSideShieldCapture(){
 function checkForDarkWinner(){
   refugeSquares.forEach(function (square){
     if (board[square].occupied === -2){
-      console.log(winner);
       winner = true
     }
     checkWinner()
