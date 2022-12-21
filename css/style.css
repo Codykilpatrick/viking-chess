@@ -15,6 +15,7 @@ font-size: x-large;
 
 section.board {
   display: grid;
+  background-color: tan;
   grid-template-rows: repeat(11, 7vmin);
   grid-template-columns: repeat(11, 7vmin);
   grid-gap: 0vmin;
