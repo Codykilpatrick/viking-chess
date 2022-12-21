@@ -312,16 +312,17 @@ function updateBoard(){
       value.innerText = ""
     }
     else if (board[idx].occupied === 1){
-      value.innerText = "1"
+      value.innerText = "⚫"
     }
     else if (board[idx].occupied === -1){
-      value.innerText = "-1"
+      value.innerText = "⚪"
     }
     else if (board[idx].occupied === -2){
-      value.innerText = "K"
+      value.innerText = "👑"
     }
     })
 };
+
 
 function updateMessage() {
   if (turn === 1){
@@ -343,7 +344,7 @@ function checkWinner(){
 //! ------------------Hover functionality---------------------
 function possibleMoves(evt) {
   squareEls.forEach(function (el) {
-  el.style.background ="black"
+  el.style.background ="tan"
 })
   hoverTarget = evt.target
   if (hoverTarget.innerText === "1" || hoverTarget.innerText === "-1" || hoverTarget.innerText === "K"){
