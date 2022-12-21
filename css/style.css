@@ -11,6 +11,7 @@ flex-direction: column;
 text-align: center;
 color: white;
 font-size: x-large;
+align-items: center;
 }
 
 section.board {
@@ -42,6 +43,9 @@ section.board > * {
 }
 .throne {
   background-color: gold !important;
+}
+.btn {
+  width: 70px;
 }
 
 #sq0 {
