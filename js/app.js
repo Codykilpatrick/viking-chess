@@ -240,9 +240,10 @@ function placePiece(firstClick, secondClickId){
 }
 
 function checkValidMoves(secondClickId){
+  // console.log(firstClick);
   secondClickId = +secondClickId
   //checks if space is occupied
-  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2 || board[secondClickId].isThrone === true || board[secondClickId].isRefuge === true){
+  if (board[secondClickId].occupied === -1 || board[secondClickId].occupied === 1 || board[secondClickId].occupied === -2 || board[secondClickId].isThrone === true || (board[secondClickId].isRefuge === true && firstClick !== -2)){
     invalidEl.innerText = "Invalid move!"
     return false
   } 
