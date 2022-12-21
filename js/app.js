@@ -492,7 +492,7 @@ function checkLeftCapture(){
 }
 
 function checkRightCapture(){
-  if (secondClickId === 119){
+  if (secondClickId > 119){
     return
   }
   let right = board[secondClickId + 1];
@@ -749,8 +749,10 @@ function leftSideShieldCapture(){
 function checkForDarkWinner(){
   refugeSquares.forEach(function (square){
     if (board[square].occupied === -2){
+      console.log(winner);
       winner = true
     }
+    checkWinner()
   })
 }
 
@@ -878,7 +880,6 @@ function whitePieceSurround(){
   })
   if (whiteTotalValidMoves.length === 0){
     winner = true
-    console.log(winner);
   } else {
     whiteTotalValidMoves = []
     whitePieces = []
