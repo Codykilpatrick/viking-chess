@@ -18,6 +18,8 @@ background-size:cover;
 
 section.board {
   display: grid;
+  background-image: url("../images/table1.jpeg");
+  background-size:cover;
   background-color: tan;
   grid-template-rows: repeat(11, 7vmin);
   grid-template-columns: repeat(11, 7vmin);

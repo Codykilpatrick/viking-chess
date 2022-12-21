@@ -344,10 +344,10 @@ function checkWinner(){
     }
   }
 }
-//! ------------------Hover functionality---------------------
+// ! ------------------Hover functionality---------------------
 function possibleMoves(evt) {
   squareEls.forEach(function (el) {
-  el.style.background ="tan"
+  el.style.background ="rgba(0,0,0,0)"
 })
 hoverTarget = evt.target
 console.log(hoverTarget);
