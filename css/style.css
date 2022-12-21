@@ -54,16 +54,12 @@ section.board > * {
   margin-bottom: 16px;
   background-color: black;
   color: white;
+  border: 0px;
   border-radius: 5px;
 }
 
 .sqr{
   opacity: 0.9;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 #sq0 {
