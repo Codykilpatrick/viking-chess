@@ -174,6 +174,7 @@ function init(evt){
   winner = false
   render()
   updateMessage()
+  invalidEl.innerText = ''
 }
 
 function handleClick(evt){
