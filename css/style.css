@@ -62,6 +62,14 @@ section.board > * {
   opacity: 0.9;
 }
 
+h1{
+  border-bottom: solid black 1px;
+}
+
+#invalid-move{
+  color: red;
+}
+
 #sq0 {
   border-top-left-radius: 20px;
 }
