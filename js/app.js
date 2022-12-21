@@ -341,6 +341,7 @@ function checkWinner(){
     }else {
       messageEl.innerText = `Player one wins!`
     }
+    sounds.playWinnerSound()
   }
 }
 // ! ------------------Hover functionality---------------------
