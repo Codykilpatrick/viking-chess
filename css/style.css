@@ -45,7 +45,12 @@ section.board > * {
   background-color: gold !important;
 }
 .btn {
-  width: 70px;
+  width: 170px;
+  font-size: 24px;
+  margin-bottom: 16px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
 }
 
 #sq0 {
