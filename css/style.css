@@ -3,12 +3,14 @@ body {
 /* Use a system font, if none are available use an available sans-sarif   font */
 font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+font-family: 'Caveat', cursive;
 margin: 0;
 height: 100vh;
 display: flex;
 flex-direction: column;
 text-align: center;
 color: white;
+font-size: x-large;
 }
 
 section.board {
@@ -28,6 +30,10 @@ section.board > * {
   align-items: center;
   justify-content: space-around;
   font-size: 40px;
+}
+
+.head-text{
+  margin: 0;
 }
 
 .refuge {
