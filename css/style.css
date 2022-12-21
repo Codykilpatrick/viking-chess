@@ -18,6 +18,7 @@ section.board {
   grid-gap: 0vmin;
   color: #FF10F0;
   border: black solid 1px;
+  border-radius: 20px;
   margin: auto;
 }
 
@@ -34,4 +35,17 @@ section.board > * {
 }
 .throne {
   background-color: gold !important;
+}
+
+#sq0 {
+  border-top-left-radius: 20px;
+}
+#sq10 {
+  border-top-right-radius: 20px;
+}
+#sq110 {
+  border-bottom-left-radius: 20px;
+}
+#sq120 {
+  border-bottom-right-radius: 20px;
 }
