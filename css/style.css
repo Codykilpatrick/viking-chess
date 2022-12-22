@@ -65,11 +65,12 @@ section.board > * {
 
 h1{
   border-bottom: solid black 1px;
+  font-size: 32px;
 }
 
 p {
   margin: 16px;
-  background-color: tan;
+  background-color: black;
 }
 
 #center-section{

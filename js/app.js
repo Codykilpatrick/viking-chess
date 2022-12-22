@@ -330,9 +330,9 @@ function updateBoard(){
 
 function updateMessage() {
   if (turn === 1){
-    messageEl.innerText = "It's player Black's turn!"
+    messageEl.innerText = "It's Black's turn!"
   } else {
-    messageEl.innerText = "Its player White's turn!"
+    messageEl.innerText = "It's White's turn!"
   }
 }
 

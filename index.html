@@ -17,11 +17,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1 class="head-text">HNEFATAFL</h1>
+  <h1 class="head-text">The goal of the Vikings (light pieces) is to get their king to a refuge (i.e., one of the four corner squares). The goal od the Attackers (dark pieces) is to capture the king before he makes it to safety</h1>
 	<h2 class="head-text" id="message">It's player one's turn!</h2>
   <h2 class="head-text" id="invalid-move"></h2>
   <section id="center-section">
-  <p>Hnefatafl is a chess-like board game where white's goal is to protect their king and get them to safety while black's goal is to stop this at all costs! This variation is played on an 11x11 board with the four corners being the "refuge" or goal spaced for white. All pieces are able to move only in straight lines from their current location up until they reach the edge or are blocked by another piece. All pieces can be captured if they are sandwiched between two opposing pieces either vertically or horizontally.
+  <p>The Attackers have the first move, then turns alternate between players.
+    <br>
+    <br>
+    All Pieces can move horizontally or vertically (never diagonally). They can also move any number of squares unless stopped by the presence of another piece, a refuge square, or the edge of the board.
+    <br>
+    <br>
+    Pieces are captures by flanking (i.e., sandwhiching an opponent's piece between two of your pieces OR sandwhiching an opponent's piece between one of your pieces and an empty refuge), this is called custodianship. Whenever a piece is captured, it is removed from the board.
+    <br>
+    <br>
+    It is possible to move a piece so that it causes more than one piece to be flanked. In one move, the maximum number of pieces that can be captured is 3.
   </p>
     <section class="board">
       <div class="sqr refuge" id="sq0"></div>
@@ -146,7 +155,13 @@
       <div class="sqr" id="sq119"></div>
       <div class="sqr refuge" id="sq120"></div>
     </section>
-    <p>Hnefatafl is a chess-like board game where white's goal is to protect their king and get them to safety while black's goal is to stop this at all costs! This variation is played on an 11x11 board with the four corners being the "refuge" or goal spaced for white. All pieces are able to move only in straight lines from their current location up until they reach the edge or are blocked by another piece. All pieces can be captured if they are sandwiched between two opposing pieces either vertically or horizontally.
+    <p>A row of pieces at the edge of the board may also be captured by completely surrounding them against the board edge, so that none of them have room to move. This capturing move must be a flanking move to a square at the edge of the board. It's called a shield wall capture.
+    <br>
+    <br>
+    To capture the king, you must flank him on all sides with Attackers, or on three sides with the Attackers, if the fourth side is the center square or one of the board edges, so he cannot move.
+    <br>
+    <br>
+    Capture must always be a deliberate act, so a piece can choose to move between two opposing pieces into a sandwhiched position and not be captured.
     </p>
   </section>    
 	<button class="btn">Reset</button>
