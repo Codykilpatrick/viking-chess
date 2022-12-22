@@ -117,8 +117,14 @@ h1{
   border-bottom-right-radius: 20px;
 }
 
-@media (max-width: 800px){
+@media (max-width: 700px){
   section.board > * {
     font-size: 16px;
+  }
+  .text-container {
+    display: none;
+  }
+  #rules-btn {
+    display: none;
   }
 }
