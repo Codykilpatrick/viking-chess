@@ -9,7 +9,7 @@ const bottomEdgeIndex = [111, 112, 113, 114, 115, 116, 117, 118, 119]
 const refugeSquares = [0, 10, 110, 120]
 
 /*-------------------------------- Variables -----------------------------*/
-let turn, tie, player, firstClickId, secondClickId, hoverTarget, sq, board
+let turn, tie, player, firstClickId, secondClickId, hoverTarget, sq, board, rules
 let firstClick = ''
 let clickCount = 0 
 let validMoves = []
@@ -23,6 +23,9 @@ const squareEls = document.querySelectorAll(".sqr")
 const resetBtnEl = document.getElementById("reset-btn")
 const messageEl = document.getElementById("message")
 const invalidEl = document.getElementById("invalid-move")
+const rulesBtnEl = document.getElementById("rules-btn")
+const textContainer1El = document.getElementById("text-container-1")
+const textContainer2El = document.getElementById("text-container-2")
 /*----------------------------- Event Listeners --------------------------*/
 
 document.addEventListener('DOMContentLoaded', init)
@@ -34,6 +37,8 @@ squareEls.forEach(function (el) {
 })
 
 resetBtnEl.addEventListener('click', init)
+
+rulesBtnEl.addEventListener('click', showRules)
 
 /*-------------------------------- Functions -----------------------------*/
 function init(evt){
@@ -171,6 +176,7 @@ function init(evt){
   {boardIdx: 120, isRefuge: true, isEdge: true, isThrone: false, occupied: null},
   ]
   turn = 1
+  rules = 1
   winner = false
   render()
   updateMessage()
@@ -883,5 +889,13 @@ function whitePieceSurround(){
   } else {
     whiteTotalValidMoves = []
     whitePieces = []
+  }
+}
+
+function showRules(){
+  if (rules === 1){
+    textContainer1El.innerHTML = ''
+    textContainer2El.innerHTML = ''
+    rules *= -1
   }
 }

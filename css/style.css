@@ -76,7 +76,7 @@ p {
   line-height: 24px;
 }
 
-#text-container {
+.text-container {
   background-image: url("../images/rules-paper2.png");
   background-size: cover;
   margin: 0 8px;
