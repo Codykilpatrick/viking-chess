@@ -20,7 +20,7 @@ let winner = false
 /*------------------------ Cached Element References ---------------------*/
 
 const squareEls = document.querySelectorAll(".sqr")
-const resetBtnEl = document.querySelector("button")
+const resetBtnEl = document.getElementById("reset-btn")
 const messageEl = document.getElementById("message")
 const invalidEl = document.getElementById("invalid-move")
 /*----------------------------- Event Listeners --------------------------*/
