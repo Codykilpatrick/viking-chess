@@ -52,7 +52,7 @@ section.board > * {
 .btn {
   width: 170px;
   font-size: 24px;
-  margin-bottom: 16px;
+  margin: 16px;
   background-color: black;
   color: white;
   border: 0px;
