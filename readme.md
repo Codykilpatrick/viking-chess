@@ -19,7 +19,7 @@ Win conditions for black ⚫️
 - CSS
 - JavaScript
 - HTML
-- git
+- Git
 
 ## Ice Box 🧊
 
