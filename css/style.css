@@ -86,7 +86,7 @@ h1{
 }
 
 #text-container-1 > * {
-  color: black;
+  color: rgba(0, 0, 0, 0.744);
   display: flex;
   align-items: center;
   margin: 25px;
@@ -95,7 +95,7 @@ h1{
 }
 
 #text-container-2 > * {
-  color: black;
+  color: rgba(0, 0, 0, 0.744);
   display: flex;
   align-items: center;
   margin: 25px;
