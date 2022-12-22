@@ -72,15 +72,14 @@ p {
   display: flex;
   align-items: center;
   margin: 25px;
-  padding: 100px 0;
-  /* padding: -16px; */
+  padding: 100px 15px;
   line-height: 24px;
-  /* background-color: black; */
 }
 
 #text-container {
   background-image: url("../images/rules-paper2.png");
   background-size: cover;
+  margin: 0 8px;
 }
 
 #center-section{
