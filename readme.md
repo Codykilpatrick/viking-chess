@@ -32,4 +32,4 @@ Win conditions for black ⚫️
 - [ ] Place piece animations
 - [x] Sound
 
-## [Planing materials](https://docs.google.com/document/d/18PkFRw63p-66KRuFg5KhWAbk4g55Rxc_EKMgye12uqc/edit)
+## [Planning materials](https://docs.google.com/document/d/18PkFRw63p-66KRuFg5KhWAbk4g55Rxc_EKMgye12uqc/edit)
