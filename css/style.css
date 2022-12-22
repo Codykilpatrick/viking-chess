@@ -68,19 +68,39 @@ h1{
   font-size: 32px;
 }
 
-p {
+/* p {
   color: black;
   display: flex;
   align-items: center;
   margin: 25px;
   padding: 100px 15px;
   line-height: 24px;
-}
+} */
 
 .text-container {
   background-image: url("../images/rules-paper2.png");
-  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
   margin: 0 8px;
+  background-position: center;
+}
+
+#text-container-1 > * {
+  color: black;
+  display: flex;
+  align-items: center;
+  margin: 25px;
+  padding: 100px 15px;
+  line-height: 22px;
+}
+
+#text-container-2 > * {
+  color: black;
+  display: flex;
+  align-items: center;
+  margin: 25px;
+  padding: 100px 15px;
+  line-height: 24px;
 }
 
 #center-section{
