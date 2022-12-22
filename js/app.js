@@ -233,11 +233,11 @@ function placePiece(firstClick, secondClickId){
     board[secondClickId].occupied = Number(firstClick)
     turn *= -1
     render()
+    sounds.playClickSound()
   } else {
     board[firstClickId].occupied = firstClick
     render()
   }
-  sounds.playClickSound()
 }
 
 function checkValidMoves(secondClickId){
