@@ -13,7 +13,7 @@ color: white;
 font-size: x-large;
 align-items: center;
 background-image: url("../images/viking-city-background.jpg");
-background-size: auto auto;
+background-size: cover;
 /* disable user select */
 -webkit-touch-callout: none; /* iOS Safari */
 -webkit-user-select: none; /* Safari */
