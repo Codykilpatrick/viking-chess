@@ -9,7 +9,7 @@ Hnefatafl is a chess-like board game where white's goal is to protect their king
 The win condition for white ⚪️
 - Get your king to one of the four corner refuge spaces.
 
-Wind conditions for black ⚫️
+Win conditions for black ⚫️
 - Completely surround whites pieces so they have no available moves
 - Surround the king on four sides with your pieces
 
