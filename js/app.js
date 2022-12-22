@@ -894,7 +894,6 @@ function whitePieceSurround(){
 
 function showRules(){
   if (rules === 1){
-    console.log(textContainer2El.innerHTML);
     textContainer1El.innerHTML = ''
     textContainer2El.innerHTML = ''
     rules *= -1
