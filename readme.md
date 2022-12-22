@@ -1,6 +1,6 @@
 ## Hnefatafl
 
-## [Play the game here](https://codykilpatrick-viking-chess.netlify.app/)
+## [Play the game here](https://codykilpatrick-viking-chess.netlify.app/) [Planning materials](https://docs.google.com/document/d/18PkFRw63p-66KRuFg5KhWAbk4g55Rxc_EKMgye12uqc/edit)
 
 ![The starting configuration of the board in Hnefatafl](https://i.imgur.com/6HjgD9J.png)
 
@@ -31,5 +31,3 @@ Win conditions for black ⚫️
 - [ ] Accessibility features (keyboard input, colorblind settings)
 - [ ] Place piece animations
 - [x] Sound
-
-## [Planning materials](https://docs.google.com/document/d/18PkFRw63p-66KRuFg5KhWAbk4g55Rxc_EKMgye12uqc/edit)
