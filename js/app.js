@@ -345,9 +345,9 @@ function updateMessage() {
 function checkWinner(){
   if (winner === true){
     if (turn === 1){
-    messageEl.innerText = `Player two wins!`
+    messageEl.innerText = `White wins!`
     }else {
-      messageEl.innerText = `Player one wins!`
+      messageEl.innerText = `Black wins!`
     }
     sounds.playWinnerSound()
   }
