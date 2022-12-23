@@ -83,7 +83,7 @@ h1{
 .text-container {
   display: flex;
   background-image: url("../images/rules-paper2.png");
-  background-size: 100%;
+  background-size: contain;
   background-repeat: no-repeat;
   margin: 0 8px;
   background-position: center;
@@ -94,12 +94,19 @@ h1{
   overflow: hidden;
 }
 
+#text-container-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
 #text-container-1 > * {
   color: rgba(0, 0, 0, 0.744);
   display: flex;
   align-items: center;
   margin: 25px;
-  padding: 100px 15px;
+  /* padding: 100px 15px; */
   line-height: 22px;
 }
 .container-text-div > p {
@@ -114,11 +121,23 @@ h1{
   justify-content: flex-start;
   padding: 10px;
   align-items: center;
-  max-height: calc(70% - 20vmin);
+  max-height: calc(90% - 10vmin);
 }
 
 .container-text-div::-webkit-scrollbar{
   display: none;
+}
+#text-container-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.stupid {
+  width: 70%;
+  max-height: 60%;
+  padding: 0;
 }
 
 #text-container-2 > * {
@@ -126,7 +145,7 @@ h1{
   display: flex;
   align-items: center;
   margin: 25px;
-  padding: 100px 15px;
+  /* padding: 100px 15px; */
   line-height: 24px;
 }
 
