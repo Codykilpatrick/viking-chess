@@ -28,7 +28,7 @@ Win conditions for black ⚫️
 - [x] Board shadow
 - [ ] Display row numbers along the left side and columns along the top
 - [ ] Tutorial
-- [ ] Update to include responsive design
+- [x] Update to include responsive design
 - [ ] Accessibility features (keyboard input, colorblind settings)
 - [ ] Place piece animations
 - [x] Sound
